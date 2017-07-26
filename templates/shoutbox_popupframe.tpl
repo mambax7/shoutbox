@@ -22,7 +22,7 @@
         <tr class='<{$cycle_color}>'>
             <td title='<{$shout.time}><{if $xoops_isadmin}> [<{$shout.ip}>]<{/if}>' width='10%'>
                 <{if $shout.avatar}>
-                    <img src='<{$shout.avatar}>' alt=''/>
+                    <img src='<{$shout.avatar}>' alt=''>
                     <br>
                 <{/if}>
                 <{if $shout.uid}>
@@ -52,15 +52,15 @@
                 <{if !$shout.uid}>
                     <a href='javascript:openWithSelfMain("<{$xoops_url}>/pmlite.php?send2=1&amp;to_userid=<{$shout.uid}>","pmlite",450,380);'><img
                                 src='<{$xoops_url}>/images/icons/pm.gif' alt=''
-                                border='0'/></a>
+                                border='0'></a>
                 <{/if}>
                 <{if !$shout.email}>
                     <a href='mailto:<{$shout.email}>'><img src='<{$xoops_url}>/images/icons/email.gif' border='0'
-                                                           alt=''/></a>
+                                                           alt=''></a>
                 <{/if}>
                 <{if !$shout.url}>
                     <a href='<{$shout.url}>' target='_blank'><img src='<{$xoops_url}>/images/icons/www.gif' border='0'
-                                                                  alt=''/></a>
+                                                                  alt=''></a>
                 <{/if}>
             </td>
         </tr>

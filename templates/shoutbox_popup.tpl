@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>"/>
+    <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>">
     <title><{$smarty.const._MD_SHOUTBOX_POPUP_TITLE}><{if $uname}><{$smarty.const._MD_SHOUTBOX_POPUP_CONNECTED}><{$uname}><{/if}></title>
 
     <style type='text/css' media='all'>
@@ -40,9 +40,9 @@
 
                         <form name="shoutform" method="post" action="shoutpopupframe.php" target="shoutFrame">
                             <{securityToken}><{*//mb*}>
-                            <input type="hidden" name="uname" value="<{$uname}>"/>
-                            <input type="hidden" name="uid" value="<{$uid}>"/>
-                            <input type="hidden" value="1" name="didpost"/>
+                            <input type="hidden" name="uname" value="<{$uname}>">
+                            <input type="hidden" name="uid" value="<{$uid}>">
+                            <input type="hidden" value="1" name="didpost">
                             <script type="text/javascript">
                                 <!--
                                 document.write('<input type="text" class="text" id="shoutfield" name="message" size="18" maxlength="200" style="width: 200px; border: solid 1px #000000;"><input name="shoutsubmit" class="button" type="submit" value="<{$smarty.const._MD_SHOUTBOX_POPUP_SHOUT}>" style="width:40px; border: solid 1px #000000; margin-left: 5px;">');
@@ -61,7 +61,7 @@
                                    name="shoutrefresh"
                                    value="checkbox"
                                    checked='checked'
-                                   onChange="top.shoutFrame.location.reload();"/>
+                                   onChange="top.shoutFrame.location.reload();">
                             | <span style="font-weight: bold;"><{$smarty.const._MD_SHOUTBOX_POPUP_REFRESHTIME}></span>
                             <select id="refreshtime" name="refreshtime">
                                 <option value="5000">5 s</option>
@@ -84,14 +84,14 @@
                                 |
                                 <span style="font-weight: bold;"><{$smarty.const._MD_SHOUTBOX_POPUP_AUTOFOCUS}></span>
                                 <input id='autofocus' type='checkbox' class='checkbox' name='autofocus'
-                                       value='autofocus' checked='checked'/>
+                                       value='autofocus' checked='checked'>
                             <{/if}>
                             <{if $config.popup_sound}>
                                 <br>
                                 <span style="font-weight: bold;"><{$smarty.const._MD_SHOUTBOX_POPUP_SOUND_ON}></span>
                                 <input id='soundselect' type='checkbox' class='checkbox' name='soundselect'
                                        value='soundselect' checked='checked'
-                                       onChange="top.shoutFrame.location.reload();"/>
+                                       onChange="top.shoutFrame.location.reload();">
                             <{/if}>
                         </form>
                     </div>
@@ -115,14 +115,14 @@
                                     <br><span style="font-weight: bold;"><{$smarty.const._MD_SHOUTBOX_POPUP_ENTERNAME}> </span><br>
                                     <input type="text" id="shoutnick" name="uname" size="15" maxlength="12"
                                            onFocus="shoutform.shoutnick.select();" value="<{$uname}>"
-                                           style="border: solid 1px #000000;"/>
+                                           style="border: solid 1px #000000;">
                                     <input name="submit" type="submit"
                                            value="<{$smarty.const._MD_SHOUTBOX_POPUP_CONNECT}>"
-                                           style="border: solid 1px #000000; margin-left: 5px;"/>
+                                           style="border: solid 1px #000000; margin-left: 5px;">
                                 </form>
                                 <{/if}>
                                 <br><br><input value='<{$smarty.const._CLOSE}>' type='button'
-                                               onclick='window.close();' style='border: solid 1px #000000;'/>
+                                               onclick='window.close();' style='border: solid 1px #000000;'>
                             </div>
                         </div>
                     </div>

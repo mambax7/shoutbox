@@ -26,10 +26,10 @@ function b_shoutbox_show($options)
     global $xoopsUser, $xoopsConfig;
 
     /** @var XoopsModuleHandler $moduleHandler */
-    $moduleHandler  = xoops_getHandler('module');
-    $module         = $moduleHandler->getByDirname('shoutbox');
+    $moduleHandler = xoops_getHandler('module');
+    $module        = $moduleHandler->getByDirname('shoutbox');
     $configHandler = xoops_getHandler('config');
-    $block          = $configHandler->getConfigsByCat(0, $module->getVar('mid'));
+    $block         = $configHandler->getConfigsByCat(0, $module->getVar('mid'));
 
     if ($block['captcha_enable']) {
         xoops_load('XoopsFormCaptcha');
@@ -57,8 +57,7 @@ function b_shoutbox_show($options)
         xoopsSmilies('shoutfield');
         $block['shoutbox_smibar'] = ob_get_contents();
         ob_end_clean();
-        $block['shoutbox_smibar'] = str_replace("<a href='#moresmiley' onmouseover='style.cursor=\"hand\"' alt=''", "<a href='#moresmiley' onmouseover='style.cursor=\"hand\"' title='More'",
-                                                $block['shoutbox_smibar']);
+        $block['shoutbox_smibar'] = str_replace("<a href='#moresmiley' onmouseover='style.cursor=\"hand\"' alt=''", "<a href='#moresmiley' onmouseover='style.cursor=\"hand\"' title='More'", $block['shoutbox_smibar']);
     }
 
     if (!is_object($xoopsUser) && !$block['popup_guests']) {

@@ -13,7 +13,7 @@
             <b><{$smarty.const._MB_SHOUTBOX_NICK}>:</b>
             <br>
             <input id="shoutnick" onFocus="shoutform.shoutnick.select();" type="text" name="uname" size="18"
-                   maxlength="20" class="shttxt" value="<{$block.shoutbox_uname}>"/>
+                   maxlength="20" class="shttxt" value="<{$block.shoutbox_uname}>">
         <{/if}>
         <br><b><{$smarty.const._MB_SHOUTBOX_SHOUT_TITLE}>:</b><br>
         <{if $block.input_type}>
@@ -45,7 +45,7 @@
                       onKeyUp="limitText(shoutfield);"></textarea>
         <{else}>
             <input type="text" id="shoutfield" name="message" size="<{$block.text_linelength}>"
-                   maxlength="<{$block.text_maxchars}>"/>
+                   maxlength="<{$block.text_maxchars}>">
         <{/if}>
         <{if $block.captcha_caption}>
             <br>
@@ -54,10 +54,10 @@
             <{$block.captcha_render}>
         <{/if}>
         <br>
-        <input type="submit" value="<{$smarty.const._MB_SHOUTBOX_SHOUT}>"/>
+        <input type="submit" value="<{$smarty.const._MB_SHOUTBOX_SHOUT}>">
         <{if $xoops_isadmin}>            &nbsp;
             <input type="submit" name="clear" value="<{$smarty.const._MB_SHOUTBOX_CLEAR}>"
-                   onClick="return(confirm('<{$smarty.const._MB_SHOUTBOX_CONFIRMDEL|escape:'quotes'}>'))"/>
+                   onClick="return(confirm('<{$smarty.const._MB_SHOUTBOX_CONFIRMDEL|escape:'quotes'}>'))">
         <{/if}>
         <br><br>
         <table width="100%" height="10px" cellpadding="0" cellspacing="0"
@@ -66,14 +66,14 @@
                 <td valign="top" align="left" width="10%">
                     <form>
                         <input type="button" value="<{$smarty.const._MB_SHOUTBOX_REFRESH}>"
-                               onClick="parent.shoutFrame.location='<{$xoops_url}>/modules/shoutbox/shoutframe.php'"/>
+                               onClick="parent.shoutFrame.location='<{$xoops_url}>/modules/shoutbox/shoutframe.php'">
                     </form>
                 </td>
                 <{if $block.popup}>
                 <td valign="top" align="left">
                     <form>
                         <input type="button" value="<{$smarty.const._MB_SHOUTBOX_POPUP}>"
-                               onClick="openWithSelfMain('<{$xoops_url}>/modules/shoutbox/popup.php','<{$smarty.const._MB_SHOUTBOX_TITLE}>',<{$block.popup_width}>,<{$block.popup_height}>);"/>
+                               onClick="openWithSelfMain('<{$xoops_url}>/modules/shoutbox/popup.php','<{$smarty.const._MB_SHOUTBOX_TITLE}>',<{$block.popup_width}>,<{$block.popup_height}>);">
                     </form>
                     <{/if}>
                 </td>
@@ -81,7 +81,7 @@
                     <td valign="top" align="right">
                         <b><{$smarty.const._MB_SHOUTBOX_AUTOREFRESH}></b>&nbsp;
                         <input id="shoutrefresh" type="checkbox" name="shoutrefresh" value="checkbox"
-                               onchange="parent.shoutFrame.location.reload();"/>
+                               onchange="parent.shoutFrame.location.reload();">
                         <select id="refreshtime" name="refreshtime">
                             <option value="10000">10 s</option>
                             <option value="20000" selected="selected">20 s</option>

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Shoutbox frame</title>
-    <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>"/>
+    <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>">
 
     <script type="text/javascript">
         <!--

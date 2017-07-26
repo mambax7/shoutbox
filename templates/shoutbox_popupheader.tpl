@@ -1,6 +1,6 @@
 <title>Shoutbox frame</title>
 <{$xoops_js}>
-<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>"/>
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>">
 <{if $refresh}>
     <script language="javascript">
         <!--
