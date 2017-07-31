@@ -114,7 +114,7 @@ define('_MI_SHOUTBOX_EMPTY', '');
 //5.02
 //Help
 define('_MI_SHOUTBOX_DIRNAME', basename(dirname(dirname(__DIR__))));
-define('_MI_SHOUTBOX_HELP_HEADER', __DIR__.'/help/helpheader.html');
+define('_MI_SHOUTBOX_HELP_HEADER', __DIR__ . '/help/helpheader.tpl');
 define('_MI_SHOUTBOX_BACK_2_ADMIN', 'Back to Administration of ');
 define('_MI_SHOUTBOX_OVERVIEW', 'Overview');
 
