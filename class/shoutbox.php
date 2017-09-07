@@ -82,7 +82,7 @@ class shoutbox
     public function getShouts($online, $bbcode, $limit)
     {
         global $xoopsUser;
-        $shouts = array();
+        $shouts = [];
         $myts   = MyTextSanitizer::getInstance();
         $objs   = $this->handler->getShouts($limit);
         $i      = 0;

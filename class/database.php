@@ -18,7 +18,7 @@
  * @since           5.0
  * @author          trabis <lusopoemas@gmail.com>
  */
-// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+// defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 class ShoutboxDatabase extends XoopsObject
 {

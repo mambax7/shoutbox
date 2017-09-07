@@ -18,7 +18,7 @@
  * @since           5.0
  * @author          trabis <lusopoemas@gmail.com>
  */
-// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+// defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 class ShoutboxFile extends XoopsObject
 {
@@ -96,7 +96,7 @@ class ShoutboxFileHandler extends XoopsPersistableObjectHandler
      */
     public function getShouts($limit)
     {
-        $objs   = array();
+        $objs   = [];
         $shouts = file($this->csvfile);
         $count  = count($shouts) - 1;
         $i      = 0;
@@ -104,7 +104,7 @@ class ShoutboxFileHandler extends XoopsPersistableObjectHandler
             if ($limit <= $i) {
                 break;
             }
-            $oneline = array();
+            $oneline = [];
             $oneline = explode('|', $shouts[$count]);
 
             $obj = $this->create();

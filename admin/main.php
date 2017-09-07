@@ -88,14 +88,14 @@ $op = empty($_GET['op']) ? '' : $_GET['op'];
 switch ($op) {
     case 'shoutboxList':
         xoops_cp_header();
-        $adminObject  = \Xmf\Module\Admin::getInstance();
+        $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation('main.php?op=shoutboxList');
         shoutboxList();
         break;
 
     case 'shoutboxEdit':
         xoops_cp_header();
-        $adminObject  = \Xmf\Module\Admin::getInstance();
+        $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation(basename(__FILE__));
         shoutboxEdit();
         break;
@@ -110,21 +110,21 @@ switch ($op) {
 
     case 'shoutboxFile':
         xoops_cp_header();
-        $adminObject  = \Xmf\Module\Admin::getInstance();
+        $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation('main.php?op=shoutboxFile');
         shoutboxFile();
         break;
 
     case 'shoutboxStatus':
         xoops_cp_header();
-        $adminObject  = \Xmf\Module\Admin::getInstance();
+        $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation('main.php?op=shoutboxStatus');
         shoutboxStatus();
         break;
 
     default:
         xoops_cp_header();
-        $adminObject  = \Xmf\Module\Admin::getInstance();
+        $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation(basename(__FILE__));
         shoutboxDefault();
         break;

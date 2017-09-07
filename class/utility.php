@@ -112,14 +112,14 @@ class ShoutboxUtility extends XoopsObject
                     break;
                 }
             } else {
-                if ((int)$v > 0) { // handles things like x.x.x.0_RC2
+                if ((int)$v > 0) { // handles versions like x.x.x.0_RC2
                     $success = false;
                     break;
                 }
             }
         }
 
-        if (!$success) {
+        if (false === $success) {
             $module->setErrors(sprintf(_AM_SHOUTBOX_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
         }
 
@@ -153,7 +153,7 @@ class ShoutboxUtility extends XoopsObject
 
     public static function getOption($option, $dirname = 'shoutbox')
     {
-        static $modOptions = array();
+        static $modOptions = [];
         if (is_array($modOptions) && array_key_exists($option, $modOptions)) {
             return $modOptions[$option];
         }

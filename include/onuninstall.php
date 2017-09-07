@@ -8,7 +8,6 @@
  * @link            http://xoops.org XOOPS
  */
 
-
 /**
  * Prepares system prior to attempting to uninstall module
  * @param XoopsModule $module {@link XoopsModule}
@@ -39,7 +38,6 @@ function xoops_module_uninstall_shoutbox(XoopsModule $module)
         return rmdirr($cacheDir);
     }
 }
-
 
 /**
  * Delete a file, or a folder and its contents

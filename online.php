@@ -35,11 +35,11 @@ if (is_object($xoopsUser)) {
 
 $onlineHandler->write($uid, $uname, time(), $xoopsModule->getVar('mid'), $_SERVER['REMOTE_ADDR']);
 
-$start          = isset($_GET['start']) ? (int)$_GET['start'] : 0;
+$start         = isset($_GET['start']) ? (int)$_GET['start'] : 0;
 $onlineHandler = xoops_getHandler('online');
-$online_total   = $onlineHandler->getCount();
-$limit          = ($online_total > 2) ? 20 : $online_total;
-$criteria       = new CriteriaCompo();
+$online_total  = $onlineHandler->getCount();
+$limit         = ($online_total > 2) ? 20 : $online_total;
+$criteria      = new CriteriaCompo();
 $criteria->setLimit($limit);
 $criteria->setStart($start);
 $onlines         = $onlineHandler->getAll($criteria);
