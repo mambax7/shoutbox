@@ -33,26 +33,26 @@ $moduleHelper->loadLanguage('modinfo');
 
 $adminmenu              = [];
 $i                      = 0;
-$adminmenu[$i]['title'] = _AM_MODULEADMIN_HOME;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
+'title' =>  _AM_MODULEADMIN_HOME,
+'link' =>  'admin/index.php',
+'icon' =>  $pathIcon32 . '/home.png',
 //++$i;
-//$adminmenu[$i]['title'] = _AM_MODULEADMIN_HOME;
-//$adminmenu[$i]['link'] = "admin/main.php";
+//'title' =>  _AM_MODULEADMIN_HOME,
+//'link' =>  "admin/main.php",
 //$adminmenu[$i]["icon"]  = $pathIcon32 . '/manage.png';
 ++$i;
-$adminmenu[$i]['title'] = _MI_SHOUTBOX_MENU_DB;
-$adminmenu[$i]['link']  = 'admin/main.php?op=shoutboxList';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/list.png';
+'title' =>  _MI_SHOUTBOX_MENU_DB,
+'link' => shoutboxList',
+'icon' =>  $pathIcon32 . '/list.png',
 ++$i;
-$adminmenu[$i]['title'] = _MI_SHOUTBOX_MENU_FILE;
-$adminmenu[$i]['link']  = 'admin/main.php?op=shoutboxFile';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/index.png';
+'title' =>  _MI_SHOUTBOX_MENU_FILE,
+'link' => shoutboxFile',
+'icon' =>  $pathIcon32 . '/index.png',
 ++$i;
-$adminmenu[$i]['title'] = _MI_SHOUTBOX_MENU_STATUS;
-$adminmenu[$i]['link']  = 'admin/main.php?op=shoutboxStatus';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/search.png';
+'title' =>  _MI_SHOUTBOX_MENU_STATUS,
+'link' => shoutboxStatus',
+'icon' =>  $pathIcon32 . '/search.png',
 ++$i;
-$adminmenu[$i]['title'] = _AM_MODULEADMIN_ABOUT;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';
+'title' =>  _AM_MODULEADMIN_ABOUT,
+'link' =>  'admin/about.php',
+'icon' =>  $pathIcon32 . '/about.png',
