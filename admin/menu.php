@@ -25,34 +25,45 @@ if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
     $moduleHelper = Xmf\Module\Helper::getHelper('system');
 }
 
-
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
 //$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 
 $moduleHelper->loadLanguage('modinfo');
 
-$adminmenu              = [];
-$i                      = 0;
-'title' =>  _AM_MODULEADMIN_HOME,
-'link' =>  'admin/index.php',
-'icon' =>  $pathIcon32 . '/home.png',
-//++$i;
+$adminmenu = [];
+
+$adminmenu[] = [
+    'title' => _AM_MODULEADMIN_HOME,
+    'link'  => 'admin/index.php',
+    'icon'  => $pathIcon32 . '/home.png',
+];
+
+//$adminmenu[] = [
 //'title' =>  _AM_MODULEADMIN_HOME,
 //'link' =>  "admin/main.php",
 //$adminmenu[$i]["icon"]  = $pathIcon32 . '/manage.png';
-++$i;
-'title' =>  _MI_SHOUTBOX_MENU_DB,
-'link' => shoutboxList',
-'icon' =>  $pathIcon32 . '/list.png',
-++$i;
-'title' =>  _MI_SHOUTBOX_MENU_FILE,
-'link' => shoutboxFile',
-'icon' =>  $pathIcon32 . '/index.png',
-++$i;
-'title' =>  _MI_SHOUTBOX_MENU_STATUS,
-'link' => shoutboxStatus',
-'icon' =>  $pathIcon32 . '/search.png',
-++$i;
-'title' =>  _AM_MODULEADMIN_ABOUT,
-'link' =>  'admin/about.php',
-'icon' =>  $pathIcon32 . '/about.png',
+//];
+
+$adminmenu[] = [
+    'title' => _MI_SHOUTBOX_MENU_DB,
+    'link'  => 'admin/main.php?op=shoutboxList',
+    'icon'  => $pathIcon32 . '/list.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_SHOUTBOX_MENU_FILE,
+    'link'  => 'admin/main.php?op=shoutboxFile',
+    'icon'  => $pathIcon32 . '/index.png',
+];
+
+$adminmenu[] = [
+    'title' => _MI_SHOUTBOX_MENU_STATUS,
+    'link'  => 'admin/main.php?op=shoutboxStatus',
+    'icon'  => $pathIcon32 . '/search.png',
+];
+
+$adminmenu[] = [
+    'title' => _AM_MODULEADMIN_ABOUT,
+    'link'  => 'admin/about.php',
+    'icon'  => $pathIcon32 . '/about.png',
+];
