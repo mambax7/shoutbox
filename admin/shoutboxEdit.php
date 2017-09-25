@@ -56,7 +56,7 @@ echo "
 </td>
 <td class='even'>\n";
 
-if ($shout['uid'] != 0) {
+if (0 != $shout['uid']) {
     echo "<input type='text' size='30' maxlength='30' name='shoutboxUname' value='$shout[uname]' readonly='readonly'>";
 } else {
     echo "<input type='text' size='30' maxlength='30' name='shoutboxUname' value='$shout[uname]'>";

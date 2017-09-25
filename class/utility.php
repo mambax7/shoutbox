@@ -66,7 +66,7 @@ class ShoutboxUtility extends XoopsObject
         $dir = opendir($src);
         //    @mkdir($dst);
         while (false !== ($file = readdir($dir))) {
-            if (($file !== '.') && ($file !== '..')) {
+            if (('.' !== $file) && ('..' !== $file)) {
                 if (is_dir($src . '/' . $file)) {
                     self::recurseCopy($src . '/' . $file, $dst . '/' . $file);
                 } else {
@@ -232,7 +232,7 @@ class ShoutboxUtility extends XoopsObject
     public static function ircLike($command)
     {
         global $xoopsModuleConfig, $xoopsUser, $special_stuff_head;
-        if ($command === '/quit') {
+        if ('/quit' === $command) {
             $special_stuff_head .= '<script language="javascript">';
             $special_stuff_head .= '    top.window.close();';
             $special_stuff_head .= '</script>';
@@ -244,9 +244,9 @@ class ShoutboxUtility extends XoopsObject
             //general commands
             //unregistered commands
             if (!$xoopsUser) {
-                if (count($commandlines) == 2) {
-                    if (($commandlines[0] === '/nick') && ($commandlines[1] !== '')) {
-                        if ($xoopsModuleConfig['guests_may_chname'] == 1) {
+                if (2 == count($commandlines)) {
+                    if (('/nick' === $commandlines[0]) && ('' !== $commandlines[1])) {
+                        if (1 == $xoopsModuleConfig['guests_may_chname']) {
                             $special_stuff_head .= '<script language="javascript">';
                             $special_stuff_head .= '    top.document.location.href="popup.php?username=' . htmlentities($commandlines[1], ENT_QUOTES) . '";';
                             $special_stuff_head .= '</script>';

@@ -165,7 +165,7 @@ class ShoutboxFileHandler extends XoopsPersistableObjectHandler
         if (!empty($shouts)) {
             $count   = count($shouts) - 1;
             $oneline = explode('|', $shouts[$count]);
-            if (count($oneline) != 0) {
+            if (0 != count($oneline)) {
                 if ($oneline[3] == $ip && $oneline[1] == $message) {
                     return true;
                 }

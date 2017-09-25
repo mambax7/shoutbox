@@ -104,15 +104,15 @@ class shoutbox
                 $shouts[$i]['message'] = wordwrap($shouts[$i]['message'], $wordwrap, "\r\n", true);
             }
 
-            if ($uid != 0) {
+            if (0 != $uid) {
                 $thisUser = new XoopsUser($uid);
                 if ($thisUser->isOnline()) {
                     $shouts[$i]['online'] = 1;
                 }
-                if ($thisUser->getVar('url') !== '') {
+                if ('' !== $thisUser->getVar('url')) {
                     $shouts[$i]['url'] = $thisUser->getVar('url');
                 }
-                if ($thisUser->getVar('user_viewemail') == 1 || ($xoopsUser && $xoopsUser->isAdmin())) {
+                if (1 == $thisUser->getVar('user_viewemail') || ($xoopsUser && $xoopsUser->isAdmin())) {
                     $shouts[$i]['email'] = $thisUser->getVar('email');
                 }
                 $shouts[$i]['avatar'] = XOOPS_URL . '/uploads/' . $thisUser->getVar('user_avatar');

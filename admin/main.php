@@ -26,10 +26,10 @@ function shoutboxDefault()
 {
     global $xoopsModuleConfig;
 
-    if ($xoopsModuleConfig['storage_type'] === 'database') {
+    if ('database' === $xoopsModuleConfig['storage_type']) {
         $database = '[' . _AM_SH_EDIT_INUSE . ']';
         $file     = '';
-    } elseif ($xoopsModuleConfig['storage_type'] === 'file') {
+    } elseif ('file' === $xoopsModuleConfig['storage_type']) {
         $database = '';
         $file     = '[' . _AM_SH_EDIT_INUSE . ']';
     }

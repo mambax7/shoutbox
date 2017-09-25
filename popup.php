@@ -32,7 +32,7 @@ if (!is_object($xoopsUser) && (!$xoopsModuleConfig['popup_guests'] || !$xoopsMod
 $uname = isset($_POST['uname']) ? trim($_POST['uname']) : '';
 
 if (!is_object($xoopsUser)) {
-    if ($xoopsModuleConfig['guests_may_chname'] == 1 && !empty($uname)) {
+    if (1 == $xoopsModuleConfig['guests_may_chname'] && !empty($uname)) {
         $myts = MyTextSanitizer::getInstance();
         $xoopsTpl->assign('uname', $myts->htmlSpecialChars($uname, ENT_QUOTES));
     } elseif (!$xoopsModuleConfig['guests_may_chname']) {

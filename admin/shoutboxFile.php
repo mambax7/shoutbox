@@ -31,7 +31,7 @@ $source      = $sanitizer->htmlSpecialChars($source);
 $hash        = sha1_file($path);
 $invalidhash = false;
 
-if (!empty($_POST['action']) && $_POST['action'] === 'Update') {
+if (!empty($_POST['action']) && 'Update' === $_POST['action']) {
     if (empty($_POST['forceUpdate']) && $hash != $_POST['hash']) {
         echo '<h1>' . _AM_SH_FILE_HASH_FAILED . '</h1>';
         $invalidhash = true;
@@ -67,7 +67,7 @@ echo "
 </td>
 </tr>";
 
-if ($invalidhash === true) {
+if (true === $invalidhash) {
     echo "
     <tr valign='top' align='left'>
     <td class='odd' width='20%'>

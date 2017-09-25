@@ -23,7 +23,7 @@ if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF']
 $id      = (int)$_REQUEST['id'];
 $handler = xoops_getModuleHandler('database', 'shoutbox');
 // Request or confirmation?
-if (!empty($_POST['confirm']) && $_POST['confirm'] === 'yes') {
+if (!empty($_POST['confirm']) && 'yes' === $_POST['confirm']) {
     // Sanitize inputs
     $obj = $handler->get($id);
     if (is_object($obj) && $handler->delete($obj)) {

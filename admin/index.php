@@ -27,14 +27,14 @@ $adminObject = \Xmf\Module\Admin::getInstance();
 global $xoopsModuleConfig;
 
 $adminObject->addInfoBox(_AM_SHOUTBOX_CURRENT_SELECTION);
-if ($xoopsModuleConfig['storage_type'] === 'database') {
+if ('database' === $xoopsModuleConfig['storage_type']) {
     $database = '[' . _AM_SH_EDIT_INUSE . ']';
     $file     = '';
     $imgDB    = "<img src='../assets/images/on.png'>";
     $imgFile  = "<img src='../assets/images/off.png'>";
     $adminObject->addInfoBoxLine(sprintf($imgDB . "<a href='main.php?op=shoutboxList'>" . _AM_SH_EDIT_DB . "</a> $database", 0), '', 'Green');
     $adminObject->addInfoBoxLine(sprintf($imgFile . "<a href='main.php?op=shoutboxFile'>" . _AM_SH_EDIT_FILE . "</a> $file", 0), '', 'Green');
-} elseif ($xoopsModuleConfig['storage_type'] === 'file') {
+} elseif ('file' === $xoopsModuleConfig['storage_type']) {
     $database = '';
     $file     = '[' . _AM_SH_EDIT_INUSE . ']';
     $imgDB    = "<img src='../assets/images/off.png'>";

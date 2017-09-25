@@ -46,7 +46,7 @@ $onlines         = $onlineHandler->getAll($criteria);
 $count           = count($onlines);
 $anonymous_count = 0;
 for ($i = 0; $i < $count; ++$i) {
-    if ($onlines[$i]['online_uid'] == 0) {
+    if (0 == $onlines[$i]['online_uid']) {
         $onlineUsers[$i]['uname'] = $xoopsConfig['anonymous'];
         $onlineUsers[$i]['uid']   = 0;
         ++$anonymous_count;

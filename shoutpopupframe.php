@@ -85,7 +85,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
     }
 
     // Enable IRC Commands
-    if ($xoopsModuleConfig['popup_irc'] == 1 && isset($message) && false !== strpos($message, '/')) {
+    if (1 == $xoopsModuleConfig['popup_irc'] && isset($message) && false !== strpos($message, '/')) {
         if (ShoutboxUtility::ircLike($message)) {
             unset($message);
             $addit = false;

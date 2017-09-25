@@ -43,7 +43,7 @@ if (!$xoopsDB->getRowsNum($result)) {
 }
 
 while (list($msg_id, $user_id, $uname, $time, $ip, $message) = $xoopsDB->fetchRow($result)) {
-    if ($evodd === 'even') {
+    if ('even' === $evodd) {
         echo "<tr class='even' align='center' valign='top'>\n";
     } else {
         echo "<tr class='even' align='center' valign='top'>\n";
@@ -51,7 +51,7 @@ while (list($msg_id, $user_id, $uname, $time, $ip, $message) = $xoopsDB->fetchRo
 
     echo "<td align='left'>
     <div title='UID: $user_id | IP: $ip'>$uname";
-    if ($user_id == 0) {
+    if (0 == $user_id) {
         echo '*';
     }
     echo "</div>
