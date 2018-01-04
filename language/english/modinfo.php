@@ -124,3 +124,8 @@ define('_MI_SHOUTBOX_OVERVIEW', 'Overview');
 define('_MI_SHOUTBOX_DISCLAIMER', 'Disclaimer');
 define('_MI_SHOUTBOX_LICENSE', 'License');
 define('_MI_SHOUTBOX_SUPPORT', 'Support');
+
+
+define('_MI_SHOUTBOX_HOME', 'Home');
+define('_MI_SHOUTBOX_DASHBOARD', 'Dashboard');
+define('_MI_SHOUTBOX_ABOUT', 'About');

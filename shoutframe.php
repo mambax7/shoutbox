@@ -20,7 +20,7 @@
 
 require_once __DIR__ . '/header.php';
 require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/shoutbox.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/utility.php';
+require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
 
 $shoutbox = new Shoutbox($xoopsModuleConfig['storage_type']);
 
@@ -44,7 +44,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
         if ($xoopsModuleConfig['guests_may_chname'] && !empty($post_uname)) {
             $uname = $post_uname;
         } else {
-            $uname = ShoutboxUtility::makeGuestName();
+            $uname = Utility::makeGuestName();
         }
         if ($xoopsModuleConfig['captcha_enable']) {
             xoops_load('XoopsCaptcha');
@@ -58,7 +58,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
         }
     } else {
         $uid   = $xoopsUser->getVar('uid');
-        $uname = ShoutboxUtility::getUserName($uid);
+        $uname = Utility::getUserName($uid);
     }
 
     //check if it is a double post
@@ -82,5 +82,5 @@ if (!empty($shouts)) {
 
 $xoopsTpl->assign('config', $xoopsModuleConfig);
 
-$xoopsTpl->xoops_setCaching(0);
+$xoopsTpl->caching=(0);
 $xoopsTpl->display('db:shoutbox_shoutframe.tpl');

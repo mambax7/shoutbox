@@ -19,7 +19,7 @@
  */
 
 require_once __DIR__ . '/header.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/utility.php';
+require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
 require_once XOOPS_ROOT_PATH . '/class/module.textsanitizer.php';
 
 if (!is_object($xoopsUser) && (!$xoopsModuleConfig['popup_guests'] || !$xoopsModuleConfig['guests_may_post'])) {
@@ -33,15 +33,15 @@ $uname = isset($_POST['uname']) ? trim($_POST['uname']) : '';
 
 if (!is_object($xoopsUser)) {
     if (1 == $xoopsModuleConfig['guests_may_chname'] && !empty($uname)) {
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
         $xoopsTpl->assign('uname', $myts->htmlSpecialChars($uname, ENT_QUOTES));
     } elseif (!$xoopsModuleConfig['guests_may_chname']) {
-        $xoopsTpl->assign('uname', ShoutboxUtility::makeGuestName());
+        $xoopsTpl->assign('uname', Utility::makeGuestName());
     } else {
         $xoopsTpl->assign('uname', '');
     }
 } else {
-    $xoopsTpl->assign('uname', ShoutboxUtility::getUserName($xoopsUser->uid()));
+    $xoopsTpl->assign('uname', Utility::getUserName($xoopsUser->uid()));
 }
 
 ob_start();
@@ -53,5 +53,5 @@ ob_end_clean();
 $xoopsTpl->assign('smiliesbar', $smiliesbar);
 $xoopsTpl->assign('config', $xoopsModuleConfig);
 
-$xoopsTpl->xoops_setCaching(0);
+$xoopsTpl->caching=(0);
 $xoopsTpl->display('db:shoutbox_popup.tpl');

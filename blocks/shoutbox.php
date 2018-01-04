@@ -22,7 +22,7 @@
 
 function b_shoutbox_show($options)
 {
-    require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/utility.php';
+    require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
     global $xoopsUser, $xoopsConfig;
 
     /** @var XoopsModuleHandler $moduleHandler */
@@ -45,7 +45,7 @@ function b_shoutbox_show($options)
         $block['shoutbox_userid'] = $xoopsUser->getVar('uid');
     } elseif ($block['guests_may_post']) {
         $block['shoutbox_access'] = true;
-        $block['shoutbox_uname']  = ShoutboxUtility::makeGuestName();
+        $block['shoutbox_uname']  = Utility::makeGuestName();
         $block['shoutbox_uid']    = 0;
     }
 

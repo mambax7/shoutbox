@@ -21,7 +21,7 @@ require_once XOOPS_ROOT_PATH . '/class/template.php';
 error_reporting(0);
 $GLOBALS['xoopsLogger']->activated = false;
 $xoopsTpl                          = new XoopsTpl();
-$xoopsTpl->xoops_setCaching(0);
+$xoopsTpl->caching=(0);
 
 $xoopsTpl->assign([
                       'xoops_theme'      => $xoopsConfig['theme_set'],

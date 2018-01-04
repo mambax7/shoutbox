@@ -1,3 +1,8 @@
+<h5>5.02 Beta 3       [NOT RELEASED]</h5>  Dev: Xoops 2.5.9, PHP 7.2.0
+<hr>
+- namespaces (mamba)
+WORK IN PROGRESS
+
 <h5>5.02 Beta 2       [2017-07-11]</h5>
 <hr>
 - XOOPS 2.5.9, PHP 7 (mamba)

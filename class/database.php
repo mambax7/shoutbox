@@ -131,7 +131,7 @@ class ShoutboxDatabaseHandler extends XoopsPersistableObjectHandler
      */
     public function shoutExists($message, $ip)
     {
-        $myts     = MyTextSanitizer::getInstance();
+        $myts     = \MyTextSanitizer::getInstance();
         $criteria = new CriteriaCompo(new Criteria('message', $myts->addSlashes($message)));
         $criteria->add(new Criteria('ip', $ip));
 

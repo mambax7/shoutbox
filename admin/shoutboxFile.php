@@ -23,7 +23,7 @@ if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF']
 }
 
 require_once XOOPS_ROOT_PATH . '/class/module.textsanitizer.php';
-$sanitizer = MyTextSanitizer::getInstance();
+$sanitizer = \MyTextSanitizer::getInstance();
 
 $path        = XOOPS_ROOT_PATH . '/uploads/shoutbox/shout.csv';
 $source      = file_get_contents($path);

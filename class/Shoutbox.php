@@ -23,7 +23,7 @@ require_once __DIR__ . '/utility.php';
 /**
  * Class shoutbox
  */
-class shoutbox
+class Shoutbox
 {
     public $handler = '';
 
@@ -41,7 +41,7 @@ class shoutbox
      */
     public function getDefaultAvatar()
     {
-        if ($value = ShoutboxUtility::getOption('guest_avatar')) {
+        if ($value = Utility::getOption('guest_avatar')) {
             $avatar = XOOPS_URL . '/modules/shoutbox/assets/images/guestavatars/guest' . $value . '.gif';
         } else {
             $avatar = XOOPS_URL . '/uploags/blank.gif';
@@ -58,7 +58,7 @@ class shoutbox
      */
     public function saveShout($uid, $uname, $message)
     {
-        $myts = MyTextSanitizer::getInstance();
+        $myts = \MyTextSanitizer::getInstance();
         $obj  = $this->handler->createShout();
         $obj->setVar('uid', $uid);
         $obj->setVar('uname', $uname);
@@ -83,7 +83,7 @@ class shoutbox
     {
         global $xoopsUser;
         $shouts = [];
-        $myts   = MyTextSanitizer::getInstance();
+        $myts   = \MyTextSanitizer::getInstance();
         $objs   = $this->handler->getShouts($limit);
         $i      = 0;
         foreach ($objs as $obj) {
@@ -94,13 +94,13 @@ class shoutbox
             $shouts[$i]['email']  = '';
             $shouts[$i]['avatar'] = $this->getDefaultAvatar();
             $shouts[$i]['uname']  = $obj->getVar('uname');
-            $shouts[$i]['time']   = $obj->time(ShoutboxUtility::getOption('stamp_format'));
+            $shouts[$i]['time']   = $obj->time(Utility::getOption('stamp_format'));
             $shouts[$i]['ip']     = $obj->getVar('ip');
 
             $obj->setVar('doxcode', $bbcode);
 
             $shouts[$i]['message'] = $myts->censorString($obj->getVar('message'));
-            if ($wordwrap = ShoutboxUtility::getOption('wordwrap_setting')) {
+            if ($wordwrap = Utility::getOption('wordwrap_setting')) {
                 $shouts[$i]['message'] = wordwrap($shouts[$i]['message'], $wordwrap, "\r\n", true);
             }
 

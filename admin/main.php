@@ -18,8 +18,8 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 // Hello admin?
-require_once __DIR__ . '/../../../include/cp_header.php';
 require_once __DIR__ . '/admin_header.php';
+
 // Admin!
 
 function shoutboxDefault()

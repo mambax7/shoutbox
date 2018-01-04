@@ -20,7 +20,7 @@
 
 require_once __DIR__ . '/header.php';
 require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/shoutbox.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/utility.php';
+require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
 
 $shoutbox = new Shoutbox($xoopsModuleConfig['storage_type']);
 
@@ -33,7 +33,7 @@ if (mt_rand(1, 100) < 11) {
 
 if (is_object($xoopsUser)) {
     $uid   = $xoopsUser->getVar('uid');
-    $uname = ShoutboxUtility::getUserName($uid);
+    $uname = Utility::getUserName($uid);
 } else {
     $uid   = 0;
     $uname = '';
@@ -62,7 +62,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
         if ($xoopsModuleConfig['guests_may_chname'] && !empty($post_uname)) {
             $uname = $post_uname;
         } else {
-            $uname = ShoutboxUtility::makeGuestName();
+            $uname = Utility::makeGuestName();
         }
         /* if ($xoopsModuleConfig['captcha_enable']) {
          xoops_load('XoopsCaptcha');
@@ -76,7 +76,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
          }*/
     } else {
         $uid   = $xoopsUser->getVar('uid');
-        $uname = ShoutboxUtility::getUserName($uid);
+        $uname = Utility::getUserName($uid);
     }
     //check if it is a double post
     if ($addit && $shoutbox->shoutExists($message)) {
@@ -86,7 +86,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
 
     // Enable IRC Commands
     if (1 == $xoopsModuleConfig['popup_irc'] && isset($message) && false !== strpos($message, '/')) {
-        if (ShoutboxUtility::ircLike($message)) {
+        if (Utility::ircLike($message)) {
             unset($message);
             $addit = false;
             $xoopsTpl->assign('refresh', true);
@@ -121,7 +121,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
  $lastmine=1;
  }
 
- if (ShoutboxUtility::setCookie($oneline[2]) && $lastmine==0) {
+ if (Utility::setCookie($oneline[2]) && $lastmine==0) {
  $newmessage = 1;
  }
  }
@@ -139,5 +139,5 @@ $xoopsTpl->assign('special_stuff_head', $special_stuff_head);
 $xoopsTpl->assign('newmessage', $newmessage);
 $xoopsTpl->assign('config', $xoopsModuleConfig);
 
-$xoopsTpl->xoops_setCaching(0);
+$xoopsTpl->caching=(0);
 $xoopsTpl->display('db:shoutbox_popupframe.tpl');

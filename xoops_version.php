@@ -20,13 +20,15 @@
 
 // defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
+require_once __DIR__ . '/preloads/autoloader.php';
+
 $moduleDirName = basename(__DIR__);
 
 // ------------------- Informations ------------------- //
 $modversion = [
     'version'             => '5.02',
-    'module_status'       => 'Beta 2',
-    'release_date'        => '2017/07/10',
+    'module_status'       => 'Beta 3',
+    'release_date'        => '2017/11/22',
     'name'                => _MI_SHOUTBOX_NAME,
     'description'         => _MI_SHOUTBOX_DESC,
     'credits'             => 'XOOPS Project',
