@@ -18,12 +18,12 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
-require_once __DIR__ . '/utility.php';
+use XoopsModules\Shoutbox;
 
 /**
  * Class shoutbox
  */
-class Shoutbox
+class MyShoutbox
 {
     public $handler = '';
 
@@ -41,7 +41,7 @@ class Shoutbox
      */
     public function getDefaultAvatar()
     {
-        if ($value = Utility::getOption('guest_avatar')) {
+        if ($value = Shoutbox\Utility::getOption('guest_avatar')) {
             $avatar = XOOPS_URL . '/modules/shoutbox/assets/images/guestavatars/guest' . $value . '.gif';
         } else {
             $avatar = XOOPS_URL . '/uploags/blank.gif';
@@ -100,12 +100,12 @@ class Shoutbox
             $obj->setVar('doxcode', $bbcode);
 
             $shouts[$i]['message'] = $myts->censorString($obj->getVar('message'));
-            if ($wordwrap = Utility::getOption('wordwrap_setting')) {
+            if ($wordwrap = Shoutbox\Utility::getOption('wordwrap_setting')) {
                 $shouts[$i]['message'] = wordwrap($shouts[$i]['message'], $wordwrap, "\r\n", true);
             }
 
             if (0 != $uid) {
-                $thisUser = new XoopsUser($uid);
+                $thisUser = new \XoopsUser($uid);
                 if ($thisUser->isOnline()) {
                     $shouts[$i]['online'] = 1;
                 }
