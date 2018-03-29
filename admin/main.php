@@ -17,19 +17,27 @@
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
  */
+
+use XoopsModules\Shoutbox;
+
 // Hello admin?
 require_once __DIR__ . '/admin_header.php';
+
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
 
 // Admin!
 
 function shoutboxDefault()
 {
-    global $xoopsModuleConfig;
+    /** @var Shoutbox\Helper $helper */
+    $helper = Shoutbox\Helper::getInstance();
 
-    if ('database' === $xoopsModuleConfig['storage_type']) {
+
+    if ('database' === $helper->getConfig('storage_type')) {
         $database = '[' . _AM_SH_EDIT_INUSE . ']';
         $file     = '';
-    } elseif ('file' === $xoopsModuleConfig['storage_type']) {
+    } elseif ('file' === $helper->getConfig('storage_type')) {
         $database = '';
         $file     = '[' . _AM_SH_EDIT_INUSE . ']';
     }
@@ -79,7 +87,10 @@ function shoutboxFile()
 
 function shoutboxStatus()
 {
-    global $xoopsDB, $xoopsModuleConfig;
+    global $xoopsDB;
+    /** @var Shoutbox\Helper $helper */
+    $helper = Shoutbox\Helper::getInstance();
+
     include __DIR__ . '/shoutboxStatus.php';
 }
 

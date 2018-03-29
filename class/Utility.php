@@ -3,17 +3,20 @@
 use Xmf\Request;
 use XoopsModules\Shoutbox;
 use XoopsModules\Shoutbox\Common;
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
+
 
 /**
  * Class Utility
  */
 class Utility
 {
-    use common\VersionChecks; //checkVerXoops, checkVerPhp Traits
+    use Common\VersionChecks; //checkVerXoops, checkVerPhp Traits
 
-    use common\ServerStats; // getServerStats Trait
+    use Common\ServerStats; // getServerStats Trait
 
-    use common\FilesManagement; // Files Management Trait
+    use Common\FilesManagement; // Files Management Trait
 
     //--------------- Custom module methods -----------------------------
 
@@ -68,7 +71,7 @@ class Utility
     public static function getUserName($uid = 0)
     {
         xoops_load('XoopsUserUtility');
-        $uname = XoopsUserUtility::getUnameFromId($uid, static::getOption('user_realname'));
+        $uname = \XoopsUserUtility::getUnameFromId($uid, static::getOption('user_realname'));
 
         return $uname;
     }
@@ -104,7 +107,10 @@ class Utility
      */
     public static function ircLike($command)
     {
-        global $xoopsModuleConfig, $xoopsUser, $special_stuff_head;
+        global  $xoopsUser, $special_stuff_head;
+        /** @var Shoutbox\Helper $helper */
+        $helper = Shoutbox\Helper::getInstance();
+
         if ('/quit' === $command) {
             $special_stuff_head .= '<script language="javascript">';
             $special_stuff_head .= '    top.window.close();';
@@ -119,7 +125,7 @@ class Utility
             if (!$xoopsUser) {
                 if (2 == count($commandlines)) {
                     if (('/nick' === $commandlines[0]) && ('' !== $commandlines[1])) {
-                        if (1 == $xoopsModuleConfig['guests_may_chname']) {
+                        if (1 == $helper->getConfig('guests_may_chname')) {
                             $special_stuff_head .= '<script language="javascript">';
                             $special_stuff_head .= '    top.document.location.href="popup.php?username=' . htmlentities($commandlines[1], ENT_QUOTES) . '";';
                             $special_stuff_head .= '</script>';

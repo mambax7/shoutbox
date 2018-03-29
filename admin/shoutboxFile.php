@@ -40,7 +40,7 @@ if (!empty($_POST['action']) && 'Update' === $_POST['action']) {
     } else {
         $source = $sanitizer->stripSlashesGPC($_POST['shoutboxSource']);
 
-        if ($file = fopen($path, 'w')) {
+        if ($file = fopen($path, 'wb')) {
             fwrite($file, $source);
             fclose($file);
             echo '<h1>' . _AM_SH_FILE_UPDATED . '</h1>';

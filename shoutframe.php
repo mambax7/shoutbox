@@ -17,12 +17,16 @@
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
  */
+use XoopsModules\Shoutbox;
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
+
 
 require_once __DIR__ . '/header.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/shoutbox.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
+require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/MyShoutbox.php';
 
-$shoutbox = new Shoutbox($xoopsModuleConfig['storage_type']);
+
+$shoutbox = new Shoutbox\MyShoutbox($helper->getConfig('storage_type'));
 
 // Admins may delete posts
 if (!empty($_POST['clear']) && (!empty($xoopsUser)) && $xoopsUser->isAdmin()) {
@@ -34,19 +38,19 @@ $double  = false;
 $message = !empty($_POST['message']) ? trim($_POST['message']) : '';
 
 $isUser      = is_object($xoopsUser);
-$isAnonymous = !$isUser && $xoopsModuleConfig['guests_may_post'];
+$isAnonymous = !$isUser && $helper->getConfig('guests_may_post');
 $isMessage   = !empty($message);
 if ($isMessage && ($isUser || $isAnonymous)) {
     //Populate uid and name and verify captcha
     if ($isAnonymous) {
         $uid        = 0;
         $post_uname = isset($_POST['uname']) ? trim($_POST['uname']) : '';
-        if ($xoopsModuleConfig['guests_may_chname'] && !empty($post_uname)) {
+        if ($helper->getConfig('guests_may_chname') && !empty($post_uname)) {
             $uname = $post_uname;
         } else {
-            $uname = Utility::makeGuestName();
+            $uname = Shoutbox\Utility::makeGuestName();
         }
-        if ($xoopsModuleConfig['captcha_enable']) {
+        if ($helper->getConfig('captcha_enable')) {
             xoops_load('XoopsCaptcha');
             $xoopsCaptcha = XoopsCaptcha::getInstance();
             if (!$xoopsCaptcha->verify()) {
@@ -58,7 +62,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
         }
     } else {
         $uid   = $xoopsUser->getVar('uid');
-        $uname = Utility::getUserName($uid);
+        $uname = Shoutbox\Utility::getUserName($uid);
     }
 
     //check if it is a double post
@@ -69,18 +73,18 @@ if ($isMessage && ($isUser || $isAnonymous)) {
 
     if ($addit) {
         $shoutbox->saveShout($uid, $uname, $message);
-        $shoutbox->pruneShouts($xoopsModuleConfig['maxshouts_trim']);
+        $shoutbox->pruneShouts($helper->getConfig('maxshouts_trim'));
         $xoopsTpl->assign('refresh', true);
     }
 }
 
-$shouts = $shoutbox->getShouts(0, $xoopsModuleConfig['allow_bbcode'], $xoopsModuleConfig['maxshouts_view']);
+$shouts = $shoutbox->getShouts(0, $helper->getConfig('allow_bbcode'), $helper->getConfig('maxshouts_view'));
 
 if (!empty($shouts)) {
     $xoopsTpl->assign('shouts', $shouts);
 }
 
-$xoopsTpl->assign('config', $xoopsModuleConfig);
+$xoopsTpl->assign('config', $xoopsModuleConfig); //TODO
 
 $xoopsTpl->caching=(0);
 $xoopsTpl->display('db:shoutbox_shoutframe.tpl');

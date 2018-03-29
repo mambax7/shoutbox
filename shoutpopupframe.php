@@ -18,11 +18,16 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
-require_once __DIR__ . '/header.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/shoutbox.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
+use XoopsModules\Shoutbox;
 
-$shoutbox = new Shoutbox($xoopsModuleConfig['storage_type']);
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
+
+require_once __DIR__ . '/header.php';
+require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/MyShoutbox.php';
+//require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
+
+$shoutbox = new Shoutbox\MyShoutbox($helper->getConfig('storage_type'));
 
 $onlineHandler = xoops_getHandler('online');
 mt_srand((double)microtime() * 1000000);
@@ -33,7 +38,7 @@ if (mt_rand(1, 100) < 11) {
 
 if (is_object($xoopsUser)) {
     $uid   = $xoopsUser->getVar('uid');
-    $uname = Utility::getUserName($uid);
+    $uname = Shoutbox\Utility::getUserName($uid);
 } else {
     $uid   = 0;
     $uname = '';
@@ -52,19 +57,19 @@ $double  = false;
 $message = !empty($_POST['message']) ? trim($_POST['message']) : '';
 
 $isUser      = is_object($xoopsUser);
-$isAnonymous = !$isUser && $xoopsModuleConfig['guests_may_post'];
+$isAnonymous = !$isUser && $helper->getConfig('guests_may_post');
 $isMessage   = !empty($message);
 if ($isMessage && ($isUser || $isAnonymous)) {
     //Populate uid and name and verify captcha
     if ($isAnonymous) {
         $uid        = 0;
         $post_uname = isset($_POST['uname']) ? trim($_POST['uname']) : '';
-        if ($xoopsModuleConfig['guests_may_chname'] && !empty($post_uname)) {
+        if ($helper->getConfig('guests_may_chname') && !empty($post_uname)) {
             $uname = $post_uname;
         } else {
-            $uname = Utility::makeGuestName();
+            $uname = Shoutbox\Utility::makeGuestName();
         }
-        /* if ($xoopsModuleConfig['captcha_enable']) {
+        /* if ($helper->getConfig('captcha_enable')) {
          xoops_load('XoopsCaptcha');
          $xoopsCaptcha = XoopsCaptcha::getInstance();
          if (!$xoopsCaptcha->verify()) {
@@ -76,7 +81,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
          }*/
     } else {
         $uid   = $xoopsUser->getVar('uid');
-        $uname = Utility::getUserName($uid);
+        $uname = Shoutbox\Utility::getUserName($uid);
     }
     //check if it is a double post
     if ($addit && $shoutbox->shoutExists($message)) {
@@ -85,8 +90,8 @@ if ($isMessage && ($isUser || $isAnonymous)) {
     }
 
     // Enable IRC Commands
-    if (1 == $xoopsModuleConfig['popup_irc'] && isset($message) && false !== strpos($message, '/')) {
-        if (Utility::ircLike($message)) {
+    if (1 == $helper->getConfig('popup_irc') && isset($message) && false !== strpos($message, '/')) {
+        if (Shoutbox\Utility::ircLike($message)) {
             unset($message);
             $addit = false;
             $xoopsTpl->assign('refresh', true);
@@ -95,7 +100,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
 
     if ($addit) {
         $shoutbox->saveShout($uid, $uname, $message);
-        $shoutbox->pruneShouts($xoopsModuleConfig['maxshouts_trim']);
+        $shoutbox->pruneShouts($helper->getConfig('maxshouts_trim'));
         $xoopsTpl->assign('refresh', true);
     }
 }
@@ -126,7 +131,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
  }
  }
  */
-$shouts = $shoutbox->getShouts(1, $xoopsModuleConfig['allow_bbcode'], $xoopsModuleConfig['maxshouts_view']);
+$shouts = $shoutbox->getShouts(1, $helper->getConfig('allow_bbcode'), $helper->getConfig('maxshouts_view'));
 
 if (!empty($shouts)) {
     $xoopsTpl->assign('shouts', $shouts);
@@ -137,7 +142,7 @@ if (!empty($shouts)) {
 $xoopsTpl->assign('lang_anonymous', $xoopsConfig['anonymous']);
 $xoopsTpl->assign('special_stuff_head', $special_stuff_head);
 $xoopsTpl->assign('newmessage', $newmessage);
-$xoopsTpl->assign('config', $xoopsModuleConfig);
+$xoopsTpl->assign('config', $xoopsModuleConfig); //TODO
 
 $xoopsTpl->caching=(0);
 $xoopsTpl->display('db:shoutbox_popupframe.tpl');

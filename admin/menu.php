@@ -20,7 +20,7 @@
 
 use XoopsModules\Shoutbox;
 
-require_once __DIR__ . '/../class/Helper.php';
+// require_once __DIR__ . '/../class/Helper.php';
 $helper = Shoutbox\Helper::getInstance();
 
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');

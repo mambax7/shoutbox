@@ -17,6 +17,7 @@
  * @author       XOOPS Development Team
  */
 
+use XoopsModules\Shoutbox;
 //require_once __DIR__ . '/setup.php';
 
 /**
@@ -26,20 +27,20 @@
  *
  * @return bool true if ready to install, false if not
  */
-function xoops_module_pre_install_shoutbox(XoopsModule $module)
+function xoops_module_pre_install_shoutbox(\XoopsModule $module)
 {
     $moduleDirName = basename(dirname(__DIR__));
-    $utilityClass  = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utilityClass)) {
+    $utility  = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($utility)) {
         xoops_load('utility', $moduleDirName);
     }
     //check for minimum XOOPS version
-    if (!$utilityClass::checkVerXoops($module)) {
+    if (!$utility::checkVerXoops($module)) {
         return false;
     }
 
     // check for minimum PHP version
-    if (!$utilityClass::checkVerPhp($module)) {
+    if (!$utility::checkVerPhp($module)) {
         return false;
     }
 
@@ -58,7 +59,7 @@ function xoops_module_pre_install_shoutbox(XoopsModule $module)
  *
  * @return bool true if installation successful, false if not
  */
-function xoops_module_install_shoutbox(XoopsModule $module)
+function xoops_module_install_shoutbox(\XoopsModule $module)
 {
     require_once __DIR__ . '/../../../mainfile.php';
     require_once __DIR__ . '/../include/config.php';
@@ -70,12 +71,10 @@ function xoops_module_install_shoutbox(XoopsModule $module)
     $helper->loadLanguage('admin');
     $helper->loadLanguage('modinfo');
 
-    $configurator = new Configurator();
-    /** @var Utility $utilityClass */
-    $utilityClass = ucfirst($moduleDirName) . 'Utility';
-    if (!class_exists($utilityClass)) {
-        xoops_load('utility', $moduleDirName);
-    }
+    $configurator = new Shoutbox\Common\Configurator();
+    /** @var Shoutbox\Utility $utility */
+    $utility = ucfirst($moduleDirName) . 'Utility';
+
 
     // default Permission Settings ----------------------
     global $xoopsModule;
@@ -93,16 +92,16 @@ function xoops_module_install_shoutbox(XoopsModule $module)
     if (count($configurator->uploadFolders) > 0) {
         //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
         foreach (array_keys($configurator->uploadFolders) as $i) {
-            $utilityClass::createFolder($configurator->uploadFolders[$i]);
+            $utility::createFolder($configurator->uploadFolders[$i]);
         }
     }
 
     //  ---  COPY blank.png FILES ---------------
-    if (count($configurator->blankFiles) > 0) {
+    if (count($configurator->copyBlankFiles) > 0) {
         $file = __DIR__ . '/../assets/images/blank.png';
-        foreach (array_keys($configurator->blankFiles) as $i) {
-            $dest = $configurator->blankFiles[$i] . '/blank.png';
-            $utilityClass::copyFile($file, $dest);
+        foreach (array_keys($configurator->copyBlankFiles) as $i) {
+            $dest = $configurator->copyBlankFiles[$i] . '/blank.png';
+            $utility::copyFile($file, $dest);
         }
     }
     //delete .html entries from the tpl table

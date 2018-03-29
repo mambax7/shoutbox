@@ -15,7 +15,13 @@
  * @return bool true if ready to uninstall, false if not
  */
 
-function xoops_module_pre_uninstall_shoutbox(XoopsModule $module)
+use XoopsModules\Shoutbox;
+
+/**
+ * @param \XoopsModule $module
+ * @return bool
+ */
+function xoops_module_pre_uninstall_shoutbox(\XoopsModule $module)
 {
     // Do some synchronization
     return true;
@@ -28,7 +34,7 @@ function xoops_module_pre_uninstall_shoutbox(XoopsModule $module)
  *
  * @return bool true if uninstallation successful, false if not
  */
-function xoops_module_uninstall_shoutbox(XoopsModule $module)
+function xoops_module_uninstall_shoutbox(\XoopsModule $module)
 {
     $cacheDir = XOOPS_ROOT_PATH . '/uploads/shoutbox';
     //Always check if a directory exists prior to creation
@@ -58,7 +64,7 @@ function rmdirr($dirname)
     $dir = dir($dirname);
     while (false !== $entry = $dir->read()) {
         // Skip pointers
-        if ('.' == $entry || '..' == $entry) {
+        if ('.' === $entry || '..' === $entry) {
             continue;
         }
 

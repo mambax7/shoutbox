@@ -42,7 +42,7 @@ if (!$xoopsDB->getRowsNum($result)) {
     echo "<tr class='even' align='center'><td colspan='4'>" . _AM_SH_LIST_NOSHOUTS . '</td></tr>';
 }
 
-while (list($msg_id, $user_id, $uname, $time, $ip, $message) = $xoopsDB->fetchRow($result)) {
+while (false !== (list($msg_id, $user_id, $uname, $time, $ip, $message) = $xoopsDB->fetchRow($result))) {
     if ('even' === $evodd) {
         echo "<tr class='even' align='center' valign='top'>\n";
     } else {

@@ -20,37 +20,6 @@
  */
 // defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
-class File extends \XoopsObject
-{
-    /**
-     * constructor
-     */
-    public function __construct()
-    {
-        $this->initVar('id', XOBJ_DTYPE_INT);
-        $this->initVar('uid', XOBJ_DTYPE_INT);
-        $this->initVar('uname', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('time', XOBJ_DTYPE_STIME);
-        $this->initVar('ip', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('message', XOBJ_DTYPE_TXTAREA);
-
-        $this->initVar('dohtml', XOBJ_DTYPE_INT, 0);
-        $this->initVar('doxcode', XOBJ_DTYPE_INT, 0);
-        $this->initVar('dosmiley', XOBJ_DTYPE_INT, 1);
-        $this->initVar('doimage', XOBJ_DTYPE_INT, 1);
-        $this->initVar('dobr', XOBJ_DTYPE_INT, 0);
-    }
-
-    /**
-     * @param string $dateFormat
-     * @param string $format
-     * @return string
-     */
-    public function time($dateFormat = 's', $format = 'S')
-    {
-        return formatTimestamp($this->getVar('time', $format), $dateFormat);
-    }
-}
 
 /**
  * Class FileHandler

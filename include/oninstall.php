@@ -20,7 +20,13 @@
  * @return bool
  */
 
-function xoops_module_install_shoutbox(XoopsModule $module)
+use XoopsModules\Shoutbox;
+
+/**
+ * @param \XoopsModule $module
+ * @return bool
+ */
+function xoops_module_install_shoutbox(\XoopsModule $module)
 {
     $newmid = $module->getVar('mid');
 
@@ -31,7 +37,7 @@ function xoops_module_install_shoutbox(XoopsModule $module)
     xoops_loadLanguage('main', $moduleDirName);
 
     // retrieve all block ids for this module
-    $blocks       = XoopsBlock::getByModule($newmid, false);
+    $blocks       = \XoopsBlock::getByModule($newmid, false);
     $msgs[]       = _MD_AM_GROUP_SETTINGS_ADD;
     $gpermHandler = xoops_getHandler('groupperm');
     //    foreach ($groups as $mygroup) {
@@ -94,7 +100,7 @@ function xoops_module_install_shoutbox(XoopsModule $module)
             }
         }
 
-        if ($file = fopen($cacheFile, 'w')) {
+        if ($file = fopen($cacheFile, 'wb')) {
             if (!fwrite($file, 'Shoutbox|' . _MD_AM_WELCOME . "|1|111.111.111.111|guest\n")) {
                 //$msgs[] = "&nbsp;&nbsp;Could not put content in file /uploads/shoutbox/shout.cvs! Please create <i>manually</i>.";
             }

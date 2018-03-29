@@ -20,7 +20,7 @@ require_once __DIR__ . '/../../mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/template.php';
 error_reporting(0);
 $GLOBALS['xoopsLogger']->activated = false;
-$xoopsTpl                          = new XoopsTpl();
+$xoopsTpl                          = new \XoopsTpl();
 $xoopsTpl->caching=(0);
 
 $xoopsTpl->assign([

@@ -18,11 +18,15 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
+use XoopsModules\Shoutbox;
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
+
 require_once __DIR__ . '/header.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
+//require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
 require_once XOOPS_ROOT_PATH . '/class/module.textsanitizer.php';
 
-if (!is_object($xoopsUser) && (!$xoopsModuleConfig['popup_guests'] || !$xoopsModuleConfig['guests_may_post'])) {
+if (!is_object($xoopsUser) && (!$helper->getConfig('popup_guests') || !$helper->getConfig('guests_may_post'))) {
     xoops_header(false);
     xoops_error("<br>You aren't allowed to enter this section!<br><br>");
     xoops_footer();
@@ -32,16 +36,16 @@ if (!is_object($xoopsUser) && (!$xoopsModuleConfig['popup_guests'] || !$xoopsMod
 $uname = isset($_POST['uname']) ? trim($_POST['uname']) : '';
 
 if (!is_object($xoopsUser)) {
-    if (1 == $xoopsModuleConfig['guests_may_chname'] && !empty($uname)) {
+    if (1 == $helper->getConfig('guests_may_chname') && !empty($uname)) {
         $myts = \MyTextSanitizer::getInstance();
         $xoopsTpl->assign('uname', $myts->htmlSpecialChars($uname, ENT_QUOTES));
-    } elseif (!$xoopsModuleConfig['guests_may_chname']) {
-        $xoopsTpl->assign('uname', Utility::makeGuestName());
+    } elseif (!$helper->getConfig('guests_may_chname')) {
+        $xoopsTpl->assign('uname', Shoutbox\Utility::makeGuestName());
     } else {
         $xoopsTpl->assign('uname', '');
     }
 } else {
-    $xoopsTpl->assign('uname', Utility::getUserName($xoopsUser->uid()));
+    $xoopsTpl->assign('uname', Shoutbox\Utility::getUserName($xoopsUser->uid()));
 }
 
 ob_start();
@@ -51,7 +55,7 @@ $smiliesbar = str_replace("<a href='#moresmiley' onmouseover='style.cursor=\"han
 ob_end_clean();
 
 $xoopsTpl->assign('smiliesbar', $smiliesbar);
-$xoopsTpl->assign('config', $xoopsModuleConfig);
+$xoopsTpl->assign('config', $xoopsModuleConfig); //TODO check on using here Helper
 
 $xoopsTpl->caching=(0);
 $xoopsTpl->display('db:shoutbox_popup.tpl');

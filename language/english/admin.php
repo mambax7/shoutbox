@@ -35,7 +35,7 @@ define('_AM_SH_STATUS_INFILE', 'Shouts in file');
 define('_AM_SH_STATUS_SIZEDB', 'Size table shoutbox');
 define('_AM_SH_STATUS_SIZEFILE', 'Size file shoutbox');
 
-// shoutboxFile.php
+// File.php
 define('_AM_SH_FILE_TITLE', 'Edit of shout.cvs');
 define('_AM_SH_FILE_SOURCE', 'Source of shout.cvs');
 define('_AM_SH_FILE_SOURCED', 'You can edit/remove lines of shout.cvs. Be sure to not break the structure (line by line).');
@@ -56,5 +56,3 @@ define('_AM_SHOUTBOX_ERROR_COLUMN', 'Could not create column in database : %s');
 define('_AM_SHOUTBOX_ERROR_BAD_XOOPS', 'This module requires XOOPS %s+ (%s installed)');
 define('_AM_SHOUTBOX_ERROR_BAD_PHP', 'This module requires PHP version %s+ (%s installed)');
 define('_AM_SHOUTBOX_ERROR_TAG_REMOVAL', 'Could not remove tags from Tag Module');
-
-

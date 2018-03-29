@@ -17,23 +17,26 @@
  * @author       XOOPS Development Team
  */
 
+use XoopsModules\Shoutbox;
+
 require_once __DIR__ . '/admin_header.php';
 
 xoops_cp_header();
 
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
+
 $adminObject = \Xmf\Module\Admin::getInstance();
 
-global $xoopsModuleConfig;
-
 $adminObject->addInfoBox(_AM_SHOUTBOX_CURRENT_SELECTION);
-if ('database' === $xoopsModuleConfig['storage_type']) {
+if ('database' === $helper->getConfig('storage_type')) {
     $database = '[' . _AM_SH_EDIT_INUSE . ']';
     $file     = '';
     $imgDB    = "<img src='../assets/images/on.png'>";
     $imgFile  = "<img src='../assets/images/off.png'>";
     $adminObject->addInfoBoxLine(sprintf($imgDB . "<a href='main.php?op=shoutboxList'>" . _AM_SH_EDIT_DB . "</a> $database", 0), '', 'Green');
     $adminObject->addInfoBoxLine(sprintf($imgFile . "<a href='main.php?op=shoutboxFile'>" . _AM_SH_EDIT_FILE . "</a> $file", 0), '', 'Green');
-} elseif ('file' === $xoopsModuleConfig['storage_type']) {
+} elseif ('file' === $helper->getConfig('storage_type')) {
     $database = '';
     $file     = '[' . _AM_SH_EDIT_INUSE . ']';
     $imgDB    = "<img src='../assets/images/off.png'>";

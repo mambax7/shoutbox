@@ -39,7 +39,7 @@ $start         = isset($_GET['start']) ? (int)$_GET['start'] : 0;
 $onlineHandler = xoops_getHandler('online');
 $online_total  = $onlineHandler->getCount();
 $limit         = ($online_total > 2) ? 20 : $online_total;
-$criteria      = new CriteriaCompo();
+$criteria      = new \CriteriaCompo();
 $criteria->setLimit($limit);
 $criteria->setStart($start);
 $onlines         = $onlineHandler->getAll($criteria);
@@ -51,7 +51,7 @@ for ($i = 0; $i < $count; ++$i) {
         $onlineUsers[$i]['uid']   = 0;
         ++$anonymous_count;
     } else {
-        $thisUser                 = new XoopsUser($onlines[$i]['online_uid']);
+        $thisUser                 = new \XoopsUser($onlines[$i]['online_uid']);
         $onlineUsers[$i]['uname'] = $thisUser->getVar('uname');
         $onlineUsers[$i]['uid']   = $thisUser->getVar('uid');
     }
@@ -59,7 +59,7 @@ for ($i = 0; $i < $count; ++$i) {
 
 if ($online_total > 20) {
     require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-    $nav = new XoopsPageNav($online_total, 20, $start, 'start', '');
+    $nav = new \XoopsPageNav($online_total, 20, $start, 'start', '');
     $xoopsTpl->assign('online_navigation', $nav->renderNav());
 }
 

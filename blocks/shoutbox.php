@@ -20,9 +20,15 @@
  * @return
  */
 
+use XoopsModules\Shoutbox;
+
+/**
+ * @param $options
+ * @return mixed
+ */
 function b_shoutbox_show($options)
 {
-    require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
+//    require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
     global $xoopsUser, $xoopsConfig;
 
     /** @var XoopsModuleHandler $moduleHandler */
@@ -33,7 +39,7 @@ function b_shoutbox_show($options)
 
     if ($block['captcha_enable']) {
         xoops_load('XoopsFormCaptcha');
-        $shoutcaptcha             = new XoopsFormCaptcha();
+        $shoutcaptcha             = new \XoopsFormCaptcha();
         $block['captcha_caption'] = $shoutcaptcha->getCaption();
         $block['captcha_render']  = $shoutcaptcha->render();
     }
@@ -45,7 +51,7 @@ function b_shoutbox_show($options)
         $block['shoutbox_userid'] = $xoopsUser->getVar('uid');
     } elseif ($block['guests_may_post']) {
         $block['shoutbox_access'] = true;
-        $block['shoutbox_uname']  = Utility::makeGuestName();
+        $block['shoutbox_uname']  = Shoutbox\Utility::makeGuestName();
         $block['shoutbox_uid']    = 0;
     }
 
