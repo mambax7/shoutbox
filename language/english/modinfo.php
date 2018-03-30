@@ -15,10 +15,10 @@ define('_MI_SHOUTBOX_MENU_STATUS', 'Status');
 define('_MI_SHOUTBOX_BLOCK', 'Shoutbox');
 
 // Categories
-define('_MI_SHOUTBOX_CAT1', '<span style="color: #FF0000; font-size: Medium;  font-weight: bold;">--- Global Settings ---</span> ');
-define('_MI_SHOUTBOX_CAT2', '<span style="color: #FF0000; font-size: Medium;  font-weight: bold;">--- Block Settings ---</span> ');
-define('_MI_SHOUTBOX_CAT3', '<span style="color: #FF0000; font-size: Medium;  font-weight: bold;">--- PopUp Settings ---</span> ');
-define('_MI_SHOUTBOX_CAT4', '<span style="color: #FF0000; font-size: Medium;  font-weight: bold;">--- Text Input Settings ---</span> ');
+define('_MI_SHOUTBOX_CAT1', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">--- Global Settings ---</span> ');
+define('_MI_SHOUTBOX_CAT2', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">--- Block Settings ---</span> ');
+define('_MI_SHOUTBOX_CAT3', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">--- PopUp Settings ---</span> ');
+define('_MI_SHOUTBOX_CAT4', '<span style="color: #FF0000; font-size: Small;  font-weight: bold;">--- Text Input Settings ---</span> ');
 
 // Config language definitions...
 define('_MI_SHOUTBOX_TITLE1', 'May guests post?');
