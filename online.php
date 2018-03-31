@@ -35,7 +35,7 @@ if (is_object($xoopsUser)) {
 
 $onlineHandler->write($uid, $uname, time(), $xoopsModule->getVar('mid'), $_SERVER['REMOTE_ADDR']);
 
-$start         = isset($_GET['start']) ? (int)$_GET['start'] : 0;
+$start         = \Xmf\Request::getInt('start', 0, 'GET');
 $onlineHandler = xoops_getHandler('online');
 $online_total  = $onlineHandler->getCount();
 $limit         = ($online_total > 2) ? 20 : $online_total;
