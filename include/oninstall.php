@@ -39,29 +39,29 @@ function xoops_module_install_shoutbox(\XoopsModule $module)
     // retrieve all block ids for this module
     $blocks       = \XoopsBlock::getByModule($newmid, false);
     $msgs[]       = _MD_AM_GROUP_SETTINGS_ADD;
-    $gpermHandler = xoops_getHandler('groupperm');
+    $grouppermHandler = xoops_getHandler('groupperm');
     //    foreach ($groups as $mygroup) {
     foreach (array_keys($groups) as $i) {
         $mygroup = $groups[$i]->getVar('groupid');
-        if ($gpermHandler->checkRight('module_admin', 0, $mygroup)) {
-            $mperm = $gpermHandler->create();
+        if ($grouppermHandler->checkRight('module_admin', 0, $mygroup)) {
+            $mperm = $grouppermHandler->create();
             $mperm->setVar('gperm_groupid', $mygroup);
             $mperm->setVar('gperm_itemid', $newmid);
             $mperm->setVar('gperm_name', 'module_admin');
             $mperm->setVar('gperm_modid', 1);
-            if (!$gpermHandler->insert($mperm)) {
+            if (!$grouppermHandler->insert($mperm)) {
                 $msgs[] = '&nbsp;&nbsp;<span style="color:#ff0000;">' . sprintf(_AM_SYSTEM_MODULES_ACCESS_ADMIN_ADD_ERROR, '<strong>' . $mygroup . '</strong>') . '</span>';
             } else {
                 $msgs[] = '&nbsp;&nbsp;' . sprintf(_MD_AM_ACCESS_ADMIN_ADD, '<strong>' . $mygroup . '</strong>');
             }
             unset($mperm);
         }
-        $mperm = $gpermHandler->create();
+        $mperm = $grouppermHandler->create();
         $mperm->setVar('gperm_groupid', $mygroup);
         $mperm->setVar('gperm_itemid', $newmid);
         $mperm->setVar('gperm_name', 'module_read');
         $mperm->setVar('gperm_modid', 1);
-        if (!$gpermHandler->insert($mperm)) {
+        if (!$grouppermHandler->insert($mperm)) {
             $msgs[] = '&nbsp;&nbsp;<span style="color:#ff0000;">' . sprintf(_MD_AM_ACCESS_USER_ADD_ERROR, '<strong>' . $mygroup . '</strong>') . '</span>';
         } else {
             $msgs[] = '&nbsp;&nbsp;' . sprintf(_MD_AM_ACCESS_USER_ADD_ERROR, '<strong>' . $mygroup . '</strong>');
@@ -69,12 +69,12 @@ function xoops_module_install_shoutbox(\XoopsModule $module)
         unset($mperm);
 
         foreach ($blocks as $blc) {
-            $bperm = $gpermHandler->create();
+            $bperm = $grouppermHandler->create();
             $bperm->setVar('gperm_groupid', $mygroup);
             $bperm->setVar('gperm_itemid', $blc);
             $bperm->setVar('gperm_name', 'block_read');
             $bperm->setVar('gperm_modid', 1);
-            if (!$gpermHandler->insert($bperm)) {
+            if (!$grouppermHandler->insert($bperm)) {
                 $msgs[] = '&nbsp;&nbsp;<span style="color:#ff0000;">' . _AM_SYSTEM_MODULES_BLOCK_ACCESS_ERROR . ' Block ID: <strong>' . $blc . '</strong> Group ID: <strong>' . $mygroup . '</strong></span>';
             } else {
                 $msgs[] = '&nbsp;&nbsp;' . _MD_AM_BLOCK_ACCESS . sprintf(_MD_AM_BLOCK_ID, '<strong>' . $blc . '</strong>') . sprintf(_MD_AM_GROUP_ID, '<strong>' . $mygroup . '</strong>');

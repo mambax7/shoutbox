@@ -18,12 +18,12 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 use XoopsModules\Shoutbox;
-/** @var Shoutbox\Helper $helper */
-$helper = Shoutbox\Helper::getInstance();
-
 
 require_once __DIR__ . '/header.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/MyShoutbox.php';
+//require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/MyShoutbox.php';
+
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
 
 
 $shoutbox = new Shoutbox\MyShoutbox($helper->getConfig('storage_type'));

@@ -35,7 +35,7 @@ class FileHandler extends \XoopsPersistableObjectHandler
     public function __construct(\XoopsDatabase $db)
     {
         $this->csvfile = XOOPS_ROOT_PATH . '/uploads/shoutbox/shout.csv';
-        parent::__construct($db, '', 'File', 'id', 'uid');
+        parent::__construct($db, '', File::class, 'id', 'uid');
     }
 
     /**

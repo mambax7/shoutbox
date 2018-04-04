@@ -17,11 +17,14 @@
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
  */
+
+use XoopsModules\Shoutbox;
+
 if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
     exit();
 }
 $id      = (int)$_REQUEST['id'];
-$handler = xoops_getModuleHandler('database', 'shoutbox');
+$handler = Shoutbox\Helper::getInstance()->getHandler('Database');
 // Request or confirmation?
 if (!empty($_POST['confirm']) && 'yes' === $_POST['confirm']) {
     // Sanitize inputs
@@ -46,46 +49,46 @@ if (!empty($_POST['confirm']) && 'yes' === $_POST['confirm']) {
     $shout['date'] = $obj->time(_DATESTRING);
 
     echo "
-    <form action='main.php?op=shoutboxRemove' method='post'>
+<form action='main.php?op=shoutboxRemove' method='post'>
     <table width='100%' class='outer' cellspacing='1'>
-    <tbody>
-    <tr>
-    <th colspan='2'>" . sprintf(_AM_SH_REMOVE_TITLE, $shout['date']) . "</th>
-    </tr>
-    <tr valign='top' align='left'>
-    <td class='odd'>
-    <b>" . _AM_SH_POSTER . "</b>
-    </td>
-    <td class='even'>
-    $shout[uname]
-    </td>
-    </tr>
-    <tr valign='top' align='left'>
-    <td class='odd'>
-    <b>" . _AM_SH_REMOVE_FROM . "</b>
-    </td>
-    <td class='even'>
-    $shout[ip]
-    </td>
-    </tr>
-    <tr valign='top' align='left'>
-    <td class='odd'>
-    <b>" . _AM_SH_MESSAGE . "</b>
-    </td>
-    <td class='even'>
-    $shout[message]
-    </td>
-    </tr>
-    <tr class='foot'>
-    <td colspan='2' align='center'>
-    <input type='hidden' name='id' value='$shout[id]'>
-    <input type='hidden' name='confirm' value='yes'>
-    <input type='submit' name='submit' value='" . _DELETE . "'>
-    <input type='button' value='" . _CANCEL . "' onClick='location=\"main.php?op=shoutboxList\"'>
-    </td>
-    </tr>
-    </tbody>
+        <tbody>
+        <tr>
+            <th colspan='2'>" . sprintf(_AM_SH_REMOVE_TITLE, $shout['date']) . "</th>
+        </tr>
+        <tr valign='top' align='left'>
+            <td class='odd'>
+                <b>" . _AM_SH_POSTER . "</b>
+            </td>
+            <td class='even'>
+                $shout[uname]
+            </td>
+        </tr>
+        <tr valign='top' align='left'>
+            <td class='odd'>
+                <b>" . _AM_SH_REMOVE_FROM . "</b>
+            </td>
+            <td class='even'>
+                $shout[ip]
+            </td>
+        </tr>
+        <tr valign='top' align='left'>
+            <td class='odd'>
+                <b>" . _AM_SH_MESSAGE . "</b>
+            </td>
+            <td class='even'>
+                $shout[message]
+            </td>
+        </tr>
+        <tr class='foot'>
+            <td colspan='2' align='center'>
+                <input type='hidden' name='id' value='$shout[id]'>
+                <input type='hidden' name='confirm' value='yes'>
+                <input type='submit' name='submit' value='" . _DELETE . "'>
+                <input type='button' value='" . _CANCEL . "' onClick='location=\"main.php?op=shoutboxList\"'>
+            </td>
+        </tr>
+        </tbody>
     </table>
-    </form>
+</form>
     ";
 }

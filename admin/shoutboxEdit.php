@@ -18,6 +18,8 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
+use XoopsModules\Shoutbox;
+
 if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
     exit();
 }
@@ -29,7 +31,7 @@ $sanitizer = new MyTextSanitizer;
 // Check or ID is a number
 $id = (int)$_GET['id'];
 
-$handler = xoops_getModuleHandler('database', 'shoutbox');
+$handler = Shoutbox\Helper::getInstance()->getHandler('Database');
 
 // Check or we got a shout
 if (!$obj = $handler->get($id)) {

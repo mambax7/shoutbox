@@ -18,6 +18,8 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
+use XoopsModules\Shoutbox;
+
 if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
     exit();
 }
@@ -30,6 +32,9 @@ $count_database = $query[0];
 // File:
 $path       = XOOPS_ROOT_PATH . '/uploads/shoutbox/shout.csv';
 $count_file = count(file($path));
+$helper = Shoutbox\Helper::getInstance();
+global $xoopsModuleConfig;
+
 
 // Size
 // Database:
@@ -45,65 +50,64 @@ $size_file = filesize($path);
 
 echo "
 <table width='100%' class='outer' cellspacing='1'>
-<tbody>
-<tr>
-<th colspan='2'>" . _AM_SH_STATUS_TITLE . "</th>
-</tr>
+    <tbody>
+    <tr>
+        <th colspan='2'>" . _AM_SH_STATUS_TITLE . "</th>
+    </tr>
 
 
-<tr valign='top' align='left'>
-<td class='odd'>
-<b>" . _AM_SH_STATUS_STORAGETYPE . "</b>
-</td>
-<td class='even'>
-$xoopsModuleConfig[storage_type]
-</td>
-</tr>
-<tr valign='top' align='left'>
-<td class='odd'>
-<ul>
-<li>" . _AM_SH_STATUS_INDB . "</li>
-</ul>
-</td>
-<td class='even'>
-$count_database
-</td>
-</tr>
-<tr valign='top' align='left'>
-<td class='odd'>
-<ul>
-<li>" . _AM_SH_STATUS_INFILE . "</li>
-</ul>
-</td>
-<td class='even'>
-$count_file
-</td>
-</tr>
+    <tr valign='top' align='left'>
+        <td class='odd'>
+            <b>" . _AM_SH_STATUS_STORAGETYPE . "</b>
+        </td>
+        <td class='even'>
+            $xoopsModuleConfig[storage_type]
+        </td>
+    </tr>
+    <tr valign='top' align='left'>
+        <td class='odd'>
+            <ul>
+                <li>" . _AM_SH_STATUS_INDB . "</li>
+            </ul>
+        </td>
+        <td class='even'>
+            $count_database
+        </td>
+    </tr>
+    <tr valign='top' align='left'>
+        <td class='odd'>
+            <ul>
+                <li>" . _AM_SH_STATUS_INFILE . "</li>
+            </ul>
+        </td>
+        <td class='even'>
+            $count_file
+        </td>
+    </tr>
 
 
-<tr valign='top' align='left'>
-<td class='odd'>
-<b>" . _AM_SH_STATUS_SIZEDB . "</b>
-</td>
-<td class='even'>
-$size_database bytes
-</td>
-</tr>
-<tr valign='top' align='left'>
-<td class='odd'>
-<b>" . _AM_SH_STATUS_SIZEFILE . "</b>
-</td>
-<td class='even'>
-$size_file bytes
-</td>
-</tr>
+    <tr valign='top' align='left'>
+        <td class='odd'>
+            <b>" . _AM_SH_STATUS_SIZEDB . "</b>
+        </td>
+        <td class='even'>
+            $size_database bytes
+        </td>
+    </tr>
+    <tr valign='top' align='left'>
+        <td class='odd'>
+            <b>" . _AM_SH_STATUS_SIZEFILE . "</b>
+        </td>
+        <td class='even'>
+            $size_file bytes
+        </td>
+    </tr>
 
 
-<tr class='foot'>
-<td colspan='2' align='center'>
-&nbsp;
-</td>
-</tr>
-</tbody>
-</table>
-";
+    <tr class='foot'>
+        <td colspan='2' align='center'>
+            &nbsp;
+        </td>
+    </tr>
+    </tbody>
+</table>";

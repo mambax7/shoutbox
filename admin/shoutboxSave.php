@@ -18,11 +18,13 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
+use XoopsModules\Shoutbox;
+
 if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
     exit();
 }
 
-$handler = xoops_getModuleHandler('database', 'shoutbox');
+$handler =  Shoutbox\Helper::getInstance()->getHandler('Database');
 
 $id = (int)$_POST['id'];
 if (!$obj = $handler->get($id)) {
