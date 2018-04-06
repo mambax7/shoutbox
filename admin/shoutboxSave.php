@@ -26,7 +26,7 @@ if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF']
 
 $handler =  Shoutbox\Helper::getInstance()->getHandler('Database');
 
-$id = (int)$_POST['id'];
+$id = \Xmf\Request::getInt('id', 0, 'POST');
 if (!$obj = $handler->get($id)) {
     /**
      * Or we got none, or something really strange happend here...

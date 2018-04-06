@@ -94,7 +94,7 @@ function shoutboxStatus()
     include __DIR__ . '/shoutboxStatus.php';
 }
 
-$op = empty($_GET['op']) ? '' : $_GET['op'];
+$op = \Xmf\Request::getString('op', '', 'GET');
 
 switch ($op) {
     case 'shoutboxList':

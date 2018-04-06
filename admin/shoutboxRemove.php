@@ -23,7 +23,7 @@ use XoopsModules\Shoutbox;
 if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
     exit();
 }
-$id      = (int)$_REQUEST['id'];
+$id      = \Xmf\Request::getInt('id', 0, 'REQUEST');
 $handler = Shoutbox\Helper::getInstance()->getHandler('Database');
 // Request or confirmation?
 if (!empty($_POST['confirm']) && 'yes' === $_POST['confirm']) {

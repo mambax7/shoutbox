@@ -29,7 +29,7 @@ require_once XOOPS_ROOT_PATH . '/class/module.textsanitizer.php';
 $sanitizer = new MyTextSanitizer;
 
 // Check or ID is a number
-$id = (int)$_GET['id'];
+$id = \Xmf\Request::getInt('id', 0, 'GET');
 
 $handler = Shoutbox\Helper::getInstance()->getHandler('Database');
 
