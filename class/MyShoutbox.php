@@ -33,7 +33,8 @@ class MyShoutbox
      */
     public function __construct($storage_type)
     {
-        $this->handler = xoops_getModuleHandler($storage_type, 'shoutbox');
+//        $this->handler = xoops_getModuleHandler($storage_type, 'shoutbox');
+        $this->handler = Shoutbox\Helper::getInstance()->getHandler($storage_type);
     }
 
     /**

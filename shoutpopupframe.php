@@ -20,12 +20,14 @@
 
 use XoopsModules\Shoutbox;
 
+require_once __DIR__ . '/header.php';
+//require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/MyShoutbox.php';
+//require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
+
+global $xoopsModuleConfig;
+
 /** @var Shoutbox\Helper $helper */
 $helper = Shoutbox\Helper::getInstance();
-
-require_once __DIR__ . '/header.php';
-require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/MyShoutbox.php';
-//require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
 
 $shoutbox = new Shoutbox\MyShoutbox($helper->getConfig('storage_type'));
 
@@ -144,5 +146,5 @@ $xoopsTpl->assign('special_stuff_head', $special_stuff_head);
 $xoopsTpl->assign('newmessage', $newmessage);
 $xoopsTpl->assign('config', $xoopsModuleConfig); //TODO
 
-$xoopsTpl->caching=(0);
+$xoopsTpl->caching= 0;
 $xoopsTpl->display('db:shoutbox_popupframe.tpl');

@@ -83,8 +83,7 @@ function xoops_module_install_shoutbox(\XoopsModule $module)
         }
     }
 
-    unset($blocks);
-    unset($groups);
+    unset($blocks, $groups);
 
     $cacheDir  = XOOPS_ROOT_PATH . '/uploads/shoutbox';
     $cacheFile = $cacheDir . '/shout.csv';

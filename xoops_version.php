@@ -26,9 +26,9 @@ $moduleDirName = basename(__DIR__);
 
 // ------------------- Informations ------------------- //
 $modversion = [
-    'version'             => '5.02',
-    'module_status'       => 'Beta 3',
-    'release_date'        => '2017/11/22',
+    'version'             => '5.10',
+    'module_status'       => 'Beta 1',
+    'release_date'        => '2018/04/09',
     'name'                => _MI_SHOUTBOX_NAME,
     'description'         => _MI_SHOUTBOX_DESC,
     'credits'             => 'XOOPS Project',
@@ -161,7 +161,7 @@ $modversion['config'][] = [
     'description' => '_MI_SHOUTBOX_DESC7',
     'formtype'    => 'select',
     'valuetype'   => 'text',
-    'options'     => ['_MI_SHOUTBOX_OP7_F' => 'file', '_MI_SHOUTBOX_OP7_D' => 'database'],
+    'options'     => ['_MI_SHOUTBOX_OP7_F' => 'File', '_MI_SHOUTBOX_OP7_D' => 'Database'],
     'default'     => 'file',
 ];
 $modversion['config'][] = [

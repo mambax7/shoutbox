@@ -31,11 +31,16 @@ function b_shoutbox_show($options)
 //    require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
     global $xoopsUser, $xoopsConfig;
 
-    /** @var XoopsModuleHandler $moduleHandler */
-    $moduleHandler = xoops_getHandler('module');
-    $module        = $moduleHandler->getByDirname('shoutbox');
+    //    /** @var XoopsModuleHandler $moduleHandler */
+    //    $moduleHandler = xoops_getHandler('module');
+    //    $module        = $moduleHandler->getByDirname('shoutbox');
+
+    /** @var Shoutbox\Helper $helper */
+    $helper  = Shoutbox\Helper::getInstance();
+    $module = $helper->getModule();
     $configHandler = xoops_getHandler('config');
     $block         = $configHandler->getConfigsByCat(0, $module->getVar('mid'));
+
 
     if ($block['captcha_enable']) {
         xoops_load('XoopsFormCaptcha');

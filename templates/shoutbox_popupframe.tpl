@@ -9,10 +9,10 @@
     <{if $config.popup_sound==1 && $newmessage}>
         <script type="text/javascript">
 
-                        // if (top.xoopsGetElementById("soundselect").checked) {
-                        //     document.write("<embed src='new_shout.wav' autostart='true' volume='100' HEIGHT='0' WIDTH='0' controls='smallconsole'>");
-                        // } else {
-                        //     document.write("<embed src='new_shout.wav' autostart='false' volume='0' HEIGHT='0' WIDTH='0' controls='smallconsole'>");
+                        //  if (top.xoopsGetElementById("soundselect").checked) {
+                        //      document.write("<embed src='new_shout.wav' autostart='true' volume='100' HEIGHT='0' WIDTH='0' controls='smallconsole'>");
+                        //  } else {
+                        //      document.write("<embed src='new_shout.wav' autostart='false' volume='0' HEIGHT='0' WIDTH='0' controls='smallconsole'>");
                         // }
 
         </script>

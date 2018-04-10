@@ -34,10 +34,10 @@ function shoutboxDefault()
     $helper = Shoutbox\Helper::getInstance();
 
 
-    if ('database' === $helper->getConfig('storage_type')) {
+    if ('Database' === $helper->getConfig('storage_type')) {
         $database = '[' . _AM_SH_EDIT_INUSE . ']';
         $file     = '';
-    } elseif ('file' === $helper->getConfig('storage_type')) {
+    } elseif ('File' === $helper->getConfig('storage_type')) {
         $database = '';
         $file     = '[' . _AM_SH_EDIT_INUSE . ']';
     }

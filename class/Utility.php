@@ -35,7 +35,7 @@ class Utility
         }
 
         $ret = null;
-        /** @var XoopsModuleHandler $moduleHandler */
+        /** @var \XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
         $module        = $moduleHandler->getByDirname($dirname);
         $configHandler = xoops_getHandler('config');

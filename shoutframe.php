@@ -29,7 +29,7 @@ $helper = Shoutbox\Helper::getInstance();
 $shoutbox = new Shoutbox\MyShoutbox($helper->getConfig('storage_type'));
 
 // Admins may delete posts
-if (!empty($_POST['clear']) && (!empty($xoopsUser)) && $xoopsUser->isAdmin()) {
+if (!empty($_POST['clear']) && !empty($xoopsUser) && $xoopsUser->isAdmin()) {
     $shoutbox->deleteShouts();
 }
 
@@ -86,5 +86,5 @@ if (!empty($shouts)) {
 
 $xoopsTpl->assign('config', $xoopsModuleConfig); //TODO
 
-$xoopsTpl->caching=(0);
+$xoopsTpl->caching= 0;
 $xoopsTpl->display('db:shoutbox_shoutframe.tpl');

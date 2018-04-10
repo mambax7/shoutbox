@@ -18,6 +18,9 @@
  * @since           5.0
  * @author          trabis <lusopoemas@gmail.com>
  */
+
+use XoopsModules\Shoutbox;
+
 // defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 

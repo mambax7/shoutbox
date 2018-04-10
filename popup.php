@@ -19,12 +19,15 @@
  */
 
 use XoopsModules\Shoutbox;
-/** @var Shoutbox\Helper $helper */
-$helper = Shoutbox\Helper::getInstance();
 
 require_once __DIR__ . '/header.php';
 //require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
 require_once XOOPS_ROOT_PATH . '/class/module.textsanitizer.php';
+
+global $xoopsModuleConfig;
+
+/** @var Shoutbox\Helper $helper */
+$helper = Shoutbox\Helper::getInstance();
 
 if (!is_object($xoopsUser) && (!$helper->getConfig('popup_guests') || !$helper->getConfig('guests_may_post'))) {
     xoops_header(false);
@@ -57,5 +60,5 @@ ob_end_clean();
 $xoopsTpl->assign('smiliesbar', $smiliesbar);
 $xoopsTpl->assign('config', $xoopsModuleConfig); //TODO check on using here Helper
 
-$xoopsTpl->caching=(0);
+$xoopsTpl->caching= 0;
 $xoopsTpl->display('db:shoutbox_popup.tpl');

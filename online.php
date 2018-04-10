@@ -67,5 +67,5 @@ $xoopsTpl->assign('users', $onlineUsers);
 $xoopsTpl->assign('anonymous_count', $anonymous_count);
 $xoopsTpl->assign('online_total', $online_total);
 
-$xoopsTpl->caching=(0);
+$xoopsTpl->caching= 0;
 $xoopsTpl->display('db:shoutbox_online.tpl');

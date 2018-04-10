@@ -45,7 +45,7 @@
                             <input type="hidden" value="1" name="didpost">
                             <script type="text/javascript">
                                 <!--
-                                document.write('<input type="text" class="text" id="shoutfield" name="message" size="18" maxlength="200" style="width: 200px; border: solid 1px #000000;"><input name="shoutsubmit" class="button" type="submit" value="<{$smarty.const._MD_SHOUTBOX_POPUP_SHOUT}>" style="width:40px; border: solid 1px #000000; margin-left: 5px;">');
+                                <{*document.write('<input type="text" class="text" id="shoutfield" name="message" size="18" maxlength="200" style="width: 200px; border: solid 1px #000000;"><input name="shoutsubmit" class="button" type="submit" value="<{$smarty.const._MD_SHOUTBOX_POPUP_SHOUT}>" style="width:40px; border: solid 1px #000000; margin-left: 5px;">');*}>
                                 //-->
                             </script>
                             <br>
