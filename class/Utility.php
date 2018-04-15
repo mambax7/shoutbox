@@ -3,8 +3,6 @@
 use Xmf\Request;
 use XoopsModules\Shoutbox;
 use XoopsModules\Shoutbox\Common;
-/** @var Shoutbox\Helper $helper */
-$helper = Shoutbox\Helper::getInstance();
 
 
 /**

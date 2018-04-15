@@ -41,7 +41,7 @@ class Configurator
      */
     public function __construct()
     {
-        $config = include __DIR__ . '/../include/config.php';
+        $config = include  dirname(__DIR__) . '/include/config.php';
 
         $moduleDirName       = basename(dirname(__DIR__));
         $capsDirName         = strtoupper($moduleDirName);
