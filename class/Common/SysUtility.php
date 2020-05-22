@@ -1,7 +1,6 @@
 <?php
 
 namespace XoopsModules\Shoutbox\Common;
-namespace XoopsModules\Shoutbox\Helper;
 
 /*
  Utility Class Definition
