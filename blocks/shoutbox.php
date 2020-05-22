@@ -21,6 +21,7 @@
  */
 
 use XoopsModules\Shoutbox;
+use XoopsModules\Shoutbox\Helper;
 
 /**
  * @param $options
@@ -31,9 +32,11 @@ function b_shoutbox_show($options)
     //    require_once XOOPS_ROOT_PATH . '/modules/shoutbox/class/Utility.php';
     global $xoopsUser, $xoopsConfig;
 
-    //    /** @var \XoopsModuleHandler $moduleHandler */
-    //    $moduleHandler = xoops_getHandler('module');
-    //    $module        = $moduleHandler->getByDirname('shoutbox');
+    /** @var Helper $helper */
+    if (!class_exists(Helper::class)) {
+        return false;
+    }
+
 
     /** @var Shoutbox\Helper $helper */
     $helper        = Shoutbox\Helper::getInstance();

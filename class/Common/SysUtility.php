@@ -1,7 +1,7 @@
 <?php
 
 namespace XoopsModules\Shoutbox\Common;
-namespace XoopsModules\Shoutbox\Helper;
+
 
 /*
  Utility Class Definition
@@ -28,23 +28,16 @@ use MyTextSanitizer;
 use XoopsFormDhtmlTextArea;
 use XoopsFormTextArea;
 use XoopsModules\Shoutbox;
+use XoopsModules\Shoutbox\Helper;
 
 /**
  * Class SysUtility
  */
 class SysUtility
 {
-    use VersionChecks;
-
-    //checkVerXoops, checkVerPhp Traits
-
-    use ServerStats;
-
-    // getServerStats Trait
-
-    use FilesManagement;
-
-    // Files Management Trait
+    use VersionChecks; //checkVerXoops, checkVerPhp Traits
+    use ServerStats; // getServerStats Trait
+    use FilesManagement; // Files Management Trait
 
     /**
      * truncateHtml can truncate a string up to a number of characters while preserving whole words and HTML tags
