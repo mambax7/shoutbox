@@ -17,13 +17,12 @@
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
  */
-
-if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
+if (!defined('XOOPS_MAINFILE_INCLUDED') || false === mb_strpos($_SERVER['SCRIPT_NAME'], 'admin/main.php')) {
     exit();
 }
 
 require_once XOOPS_ROOT_PATH . '/class/module.textsanitizer.php';
-$sanitizer = new MyTextSanitizer;
+$sanitizer = new MyTextSanitizer();
 
 echo "<h4 style='text-align: left;'>" . _AM_SH_CONFIG . "</h4>\n";
 echo "
@@ -42,7 +41,7 @@ if (!$xoopsDB->getRowsNum($result)) {
     echo "<tr class='even' align='center'><td colspan='4'>" . _AM_SH_LIST_NOSHOUTS . '</td></tr>';
 }
 
-while (false !== (list($msg_id, $user_id, $uname, $time, $ip, $message) = $xoopsDB->fetchRow($result))) {
+while (list($msg_id, $user_id, $uname, $time, $ip, $message) = $xoopsDB->fetchRow($result)) {
     if ('even' === $evodd) {
         echo "<tr class='even' align='center' valign='top'>\n";
     } else {

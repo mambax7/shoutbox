@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>">
     <title><{$smarty.const._MD_SHOUTBOX_POPUP_TITLE}><{if $uname}><{$smarty.const._MD_SHOUTBOX_POPUP_CONNECTED}><{$uname}><{/if}></title>
@@ -60,7 +59,7 @@
                                    type="checkbox"
                                    name="shoutrefresh"
                                    value="checkbox"
-                                   checked='checked'
+                                   checked
                                    onChange="top.shoutFrame.location.reload();">
                             | <span style="font-weight: bold;"><{$smarty.const._MD_SHOUTBOX_POPUP_REFRESHTIME}></span>
                             <select id="refreshtime" name="refreshtime">
@@ -84,13 +83,13 @@
                                 |
                                 <span style="font-weight: bold;"><{$smarty.const._MD_SHOUTBOX_POPUP_AUTOFOCUS}></span>
                                 <input id='autofocus' type='checkbox' class='checkbox' name='autofocus'
-                                       value='autofocus' checked='checked'>
+                                       value='autofocus' checked>
                             <{/if}>
                             <{if $config.popup_sound}>
                                 <br>
                                 <span style="font-weight: bold;"><{$smarty.const._MD_SHOUTBOX_POPUP_SOUND_ON}></span>
                                 <input id='soundselect' type='checkbox' class='checkbox' name='soundselect'
-                                       value='soundselect' checked='checked'
+                                       value='soundselect' checked
                                        onChange="top.shoutFrame.location.reload();">
                             <{/if}>
                         </form>

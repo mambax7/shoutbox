@@ -1,4 +1,5 @@
 <?php
+
 // General usage
 define('_AM_SH_CONFIG', 'Shoutbox Admin');
 define('_AM_SH_POSTER', 'Poster');

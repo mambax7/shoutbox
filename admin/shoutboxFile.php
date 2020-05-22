@@ -17,8 +17,7 @@
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
  */
-
-if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
+if (!defined('XOOPS_MAINFILE_INCLUDED') || false === mb_strpos($_SERVER['SCRIPT_NAME'], 'admin/main.php')) {
     exit();
 }
 
@@ -40,7 +39,8 @@ if (!empty($_POST['action']) && 'Update' === $_POST['action']) {
     } else {
         $source = $sanitizer->stripSlashesGPC($_POST['shoutboxSource']);
 
-        if ($file = fopen($path, 'wb')) {
+        $file = fopen($path, 'wb');
+        if ($file) {
             fwrite($file, $source);
             fclose($file);
             echo '<h1>' . _AM_SH_FILE_UPDATED . '</h1>';

@@ -33,7 +33,7 @@ if (!is_object($xoopsUser) && (!$helper->getConfig('popup_guests') || !$helper->
     xoops_header(false);
     xoops_error("<br>You aren't allowed to enter this section!<br><br>");
     xoops_footer();
-    die();
+    exit();
 }
 
 $uname = isset($_POST['uname']) ? trim($_POST['uname']) : '';
@@ -60,5 +60,5 @@ ob_end_clean();
 $xoopsTpl->assign('smiliesbar', $smiliesbar);
 $xoopsTpl->assign('config', $xoopsModuleConfig); //TODO check on using here Helper
 
-$xoopsTpl->caching= 0;
+$xoopsTpl->caching = 0;
 $xoopsTpl->display('db:shoutbox_popup.tpl');

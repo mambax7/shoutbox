@@ -1,4 +1,7 @@
-<?php namespace XoopsModules\Shoutbox;
+<?php
+
+namespace XoopsModules\Shoutbox;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -33,7 +36,7 @@ class MyShoutbox
      */
     public function __construct($storage_type)
     {
-//        $this->handler = xoops_getModuleHandler($storage_type, 'shoutbox');
+        //        $this->handler = xoops_getModuleHandler($storage_type, 'shoutbox');
         $this->handler = Shoutbox\Helper::getInstance()->getHandler($storage_type);
     }
 
@@ -42,7 +45,8 @@ class MyShoutbox
      */
     public function getDefaultAvatar()
     {
-        if ($value = Shoutbox\Utility::getOption('guest_avatar')) {
+        $value = Shoutbox\Utility::getOption('guest_avatar');
+        if ($value) {
             $avatar = XOOPS_URL . '/modules/shoutbox/assets/images/guestavatars/guest' . $value . '.gif';
         } else {
             $avatar = XOOPS_URL . '/uploags/blank.gif';
@@ -101,7 +105,8 @@ class MyShoutbox
             $obj->setVar('doxcode', $bbcode);
 
             $shouts[$i]['message'] = $myts->censorString($obj->getVar('message'));
-            if ($wordwrap = Shoutbox\Utility::getOption('wordwrap_setting')) {
+            $wordwrap              = Shoutbox\Utility::getOption('wordwrap_setting');
+            if ($wordwrap) {
                 $shouts[$i]['message'] = wordwrap($shouts[$i]['message'], $wordwrap, "\r\n", true);
             }
 

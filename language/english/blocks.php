@@ -1,4 +1,5 @@
 <?php
+
 // Blocks
 define('_MB_SHOUTBOX_TITLE', 'Shoutbox');
 define('_MB_SHOUTBOX_SHOUT', 'Post');

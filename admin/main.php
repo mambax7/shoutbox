@@ -33,7 +33,6 @@ function shoutboxDefault()
     /** @var Shoutbox\Helper $helper */
     $helper = Shoutbox\Helper::getInstance();
 
-
     if ('Database' === $helper->getConfig('storage_type')) {
         $database = '[' . _AM_SH_EDIT_INUSE . ']';
         $file     = '';
@@ -58,31 +57,31 @@ function shoutboxDefault()
 function shoutboxList()
 {
     global $xoopsDB;
-    include __DIR__ . '/shoutboxList.php';
+    require_once __DIR__ . '/shoutboxList.php';
 }
 
 function shoutboxEdit()
 {
     global $xoopsDB;
-    include __DIR__ . '/shoutboxEdit.php';
+    require_once __DIR__ . '/shoutboxEdit.php';
 }
 
 function shoutboxSave()
 {
     global $xoopsDB;
-    include __DIR__ . '/shoutboxSave.php';
+    require_once __DIR__ . '/shoutboxSave.php';
 }
 
 function shoutboxRemove()
 {
     global $xoopsDB;
-    include __DIR__ . '/shoutboxRemove.php';
+    require_once __DIR__ . '/shoutboxRemove.php';
 }
 
 function shoutboxFile()
 {
     global $xoopsDB;
-    include __DIR__ . '/shoutboxFile.php';
+    require_once __DIR__ . '/shoutboxFile.php';
 }
 
 function shoutboxStatus()
@@ -91,7 +90,7 @@ function shoutboxStatus()
     /** @var Shoutbox\Helper $helper */
     $helper = Shoutbox\Helper::getInstance();
 
-    include __DIR__ . '/shoutboxStatus.php';
+    require_once __DIR__ . '/shoutboxStatus.php';
 }
 
 $op = \Xmf\Request::getString('op', '', 'GET');
@@ -103,43 +102,36 @@ switch ($op) {
         $adminObject->displayNavigation('main.php?op=shoutboxList');
         shoutboxList();
         break;
-
     case 'shoutboxEdit':
         xoops_cp_header();
         $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation(basename(__FILE__));
         shoutboxEdit();
         break;
-
     case 'shoutboxSave':
         shoutboxSave();
         break;
-
     case 'shoutboxRemove':
         shoutboxRemove();
         break;
-
     case 'shoutboxFile':
         xoops_cp_header();
         $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation('main.php?op=shoutboxFile');
         shoutboxFile();
         break;
-
     case 'shoutboxStatus':
         xoops_cp_header();
         $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation('main.php?op=shoutboxStatus');
         shoutboxStatus();
         break;
-
     default:
         xoops_cp_header();
         $adminObject = \Xmf\Module\Admin::getInstance();
         $adminObject->displayNavigation(basename(__FILE__));
         shoutboxDefault();
         break;
-
 }
 require_once __DIR__ . '/admin_footer.php';
 //xoops_cp_footer();

@@ -20,11 +20,15 @@
 
 use XoopsModules\Shoutbox;
 
-// require_once  dirname(__DIR__) . '/class/Helper.php';
-$helper = Shoutbox\Helper::getInstance();
+/** @var \XoopsModules\Shoutbox\Helper $helper */
+$helper = \XoopsModules\Shoutbox\Helper::getInstance();
+$helper->loadLanguage('common');
+$helper->loadLanguage('feedback');
 
 $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
-$pathModIcon32 = $helper->getModule()->getInfo('modicons32');
+if (is_object($helper->getModule())) {
+    $pathModIcon32 = $helper->getModule()->getInfo('modicons32');
+}
 
 $adminmenu[] = [
     'title' => _MI_SHOUTBOX_HOME,
@@ -33,7 +37,7 @@ $adminmenu[] = [
 ];
 
 //$adminmenu[] = [
-//'title' =>  _AM_MODULEADMIN_HOME,
+//'title' =>  _MI_SHOUTBOX_HOME,
 //'link' =>  "admin/main.php",
 //$adminmenu[$i]["icon"]  = $pathIcon32 . '/manage.png';
 //];

@@ -10,12 +10,10 @@
 
 /**
  * Prepares system prior to attempting to uninstall module
- * @param XoopsModule $module {@link XoopsModule}
+ * @param \XoopsModule $module {@link XoopsModule}
  *
  * @return bool true if ready to uninstall, false if not
  */
-
-use XoopsModules\Shoutbox;
 
 /**
  * @param \XoopsModule $module
@@ -28,9 +26,8 @@ function xoops_module_pre_uninstall_shoutbox(\XoopsModule $module)
 }
 
 /**
- *
  * Performs tasks required during uninstallation of the module
- * @param XoopsModule $module {@link XoopsModule}
+ * @param \XoopsModule $module {@link XoopsModule}
  *
  * @return bool true if uninstallation successful, false if not
  */
@@ -40,19 +37,18 @@ function xoops_module_uninstall_shoutbox(\XoopsModule $module)
     //Always check if a directory exists prior to creation
     if (!is_dir($cacheDir)) {
         return true;
-    } else {
-        return rmdirr($cacheDir);
     }
+
+    return rmdirr($cacheDir);
 }
 
 /**
  * Delete a file, or a folder and its contents
  *
- * @author      Aidan Lister <aidan@php.net>
- * @param  string $dirname The directory to delete
+ * @param string $dirname The directory to delete
  * @return bool   Returns true on success, false on failure
+ * @author      Aidan Lister <aidan@php.net>
  */
-
 function rmdirr($dirname)
 {
     // Simple delete for a file

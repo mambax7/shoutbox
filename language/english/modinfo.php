@@ -55,7 +55,9 @@ define('_MI_SHOUTBOX_DESC17', 'This value imposes a limit on the number of chara
 define('_MI_SHOUTBOX_TITLE18', 'Avatar Display');
 define('_MI_SHOUTBOX_DESC18', 'Determines if avatars are displayed in ShoutBox block');
 define('_MI_SHOUTBOX_TITLE19', 'Guest Avatar');
-define('_MI_SHOUTBOX_DESC19', '<table><tr>
+define(
+    '_MI_SHOUTBOX_DESC19',
+    '<table><tr>
                                <td><img src="' . XOOPS_URL . '/modules/shoutbox/assets/images/guestavatars/guest1.gif" width=60></td>
                                <td><img src="' . XOOPS_URL . '/modules/shoutbox/assets/images/guestavatars/guest2.gif" width=60></td>
                                <td><img src="' . XOOPS_URL . '/modules/shoutbox/assets/images/guestavatars/guest3.gif" width=60></td>
@@ -67,7 +69,8 @@ define('_MI_SHOUTBOX_DESC19', '<table><tr>
                                <td>guest3</td>
                                <td>guest4</td>
                                <td>guest5</td>
-                               </tr></table>');
+                               </tr></table>'
+);
 define('_MI_SHOUTBOX_OP19_GA0', 'None');
 define('_MI_SHOUTBOX_OP19_GA1', 'guest1');
 define('_MI_SHOUTBOX_OP19_GA2', 'guest2');
@@ -110,6 +113,10 @@ define('_MI_SHOUTBOX_OP46_B', 'Disable Captcha');
 define('_MI_SHOUTBOX_OP46_C', 'Enable Frameworks Captcha');
 define('_MI_SHOUTBOX_OP46_D', 'Enable Core Captcha');
 define('_MI_SHOUTBOX_EMPTY', '');
+define('_MI_SHOUTBOX_TITLE47', 'Scrolling direction');
+define('_MI_SHOUTBOX_DESC47', 'Should the new message be added on top or at the bottom?');
+define('_MI_SHOUTBOX_OP47_TL', 'Bottom');
+define('_MI_SHOUTBOX_OP47_TA', 'Top');
 
 //5.02
 //Help
@@ -124,7 +131,6 @@ define('_MI_SHOUTBOX_OVERVIEW', 'Overview');
 define('_MI_SHOUTBOX_DISCLAIMER', 'Disclaimer');
 define('_MI_SHOUTBOX_LICENSE', 'License');
 define('_MI_SHOUTBOX_SUPPORT', 'Support');
-
 
 define('_MI_SHOUTBOX_HOME', 'Home');
 define('_MI_SHOUTBOX_DASHBOARD', 'Dashboard');

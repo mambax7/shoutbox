@@ -11,21 +11,24 @@
 
 /**
  * @copyright    XOOPS Project (https://xoops.org)
- * @license      GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
+ * @license      GNU GPL 2 or later (https://www.gnu.org/licenses/gpl-2.0.html)
  * @package
  * @since
  * @author       XOOPS Development Team
  */
+
 use XoopsModules\Shoutbox;
 
-require_once  dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
+require  dirname(__DIR__) . '/preloads/autoloader.php';
 //require_once $GLOBALS['xoops']->path('www/class/xoopsformloader.php');
 
 // require_once  dirname(__DIR__) . '/class/Utility.php';
 //require_once  dirname(__DIR__) . '/include/common.php';
 
 $moduleDirName = basename(dirname(__DIR__));
-$helper = Shoutbox\Helper::getInstance();
+/** @var Shoutbox\Helper $helper */
+$helper      = Shoutbox\Helper::getInstance();
 $adminObject = \Xmf\Module\Admin::getInstance();
 
 $pathIcon16    = \Xmf\Module\Admin::iconUrl('', 16);

@@ -16,7 +16,7 @@
  * @author          Alphalogic <alphafake@hotmail.com>
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
- * @param XoopsModule $module
+ * @param \XoopsModule $module
  * @return bool
  */
 
@@ -37,8 +37,8 @@ function xoops_module_install_shoutbox(\XoopsModule $module)
     xoops_loadLanguage('main', $moduleDirName);
 
     // retrieve all block ids for this module
-    $blocks       = \XoopsBlock::getByModule($newmid, false);
-    $msgs[]       = _MD_AM_GROUP_SETTINGS_ADD;
+    $blocks           = \XoopsBlock::getByModule($newmid, false);
+    $msgs[]           = _MD_AM_GROUP_SETTINGS_ADD;
     $grouppermHandler = xoops_getHandler('groupperm');
     //    foreach ($groups as $mygroup) {
     foreach (array_keys($groups) as $i) {
@@ -93,13 +93,13 @@ function xoops_module_install_shoutbox(\XoopsModule $module)
             if (!mkdir($cacheDir)) {
                 //$msgs[] = "Failed to create dir!";
                 return false;
-            } else {
-                //$msgs[] = "&nbsp;&nbsp;Dir /uploads/shoutbox/ successfully created!";
-                chmod($cacheDir, 0777);
             }
+            //$msgs[] = "&nbsp;&nbsp;Dir /uploads/shoutbox/ successfully created!";
+            chmod($cacheDir, 0777);
         }
 
-        if ($file = fopen($cacheFile, 'wb')) {
+        $file = fopen($cacheFile, 'wb');
+        if ($file) {
             if (!fwrite($file, 'Shoutbox|' . _MD_AM_WELCOME . "|1|111.111.111.111|guest\n")) {
                 //$msgs[] = "&nbsp;&nbsp;Could not put content in file /uploads/shoutbox/shout.cvs! Please create <i>manually</i>.";
             }
@@ -108,11 +108,10 @@ function xoops_module_install_shoutbox(\XoopsModule $module)
 
             //$msgs[] = "&nbsp;&nbsp;File /uploads/shoutbox/shout.cvs successfully created!";
             return true;
-        } else {
-            //$msgs[] = "&nbsp;&nbsp;Could not create file /uploads/shoutbox/shout.cvs! Please create <i>manually</i>.";
-            return false;
         }
-    } else {
-        return true;
+        //$msgs[] = "&nbsp;&nbsp;Could not create file /uploads/shoutbox/shout.cvs! Please create <i>manually</i>.";
+        return false;
     }
+
+    return true;
 }

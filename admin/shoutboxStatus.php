@@ -20,7 +20,7 @@
 
 use XoopsModules\Shoutbox;
 
-if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
+if (!defined('XOOPS_MAINFILE_INCLUDED') || false === mb_strpos($_SERVER['SCRIPT_NAME'], 'admin/main.php')) {
     exit();
 }
 
@@ -32,15 +32,15 @@ $count_database = $query[0];
 // File:
 $path       = XOOPS_ROOT_PATH . '/uploads/shoutbox/shout.csv';
 $count_file = count(file($path));
+/** @var Shoutbox\Helper $helper */
 $helper = Shoutbox\Helper::getInstance();
 global $xoopsModuleConfig;
-
 
 // Size
 // Database:
 // [Source: http://www.webmasterworld.com/forum88/2069.htm]
 $rows = $xoopsDB->queryF('SHOW table STATUS');
-while ($row = $xoopsDB->fetchBoth($rows)) {
+while (false !== ($row = $xoopsDB->fetchBoth($rows))) {
     if ($row['Name'] == $xoopsDB->prefix('shoutbox')) {
         $size_database = $row['Data_length'] + $row['Index_length'];
     }

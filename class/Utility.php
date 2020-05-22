@@ -1,24 +1,17 @@
-<?php namespace XoopsModules\Shoutbox;
+<?php
 
-use Xmf\Request;
+namespace XoopsModules\Shoutbox;
+
 use XoopsModules\Shoutbox;
 use XoopsModules\Shoutbox\Common;
-
+use XoopsModules\Shoutbox\Constants;
 
 /**
  * Class Utility
  */
-class Utility
+class Utility extends Common\SysUtility
 {
-    use Common\VersionChecks; //checkVerXoops, checkVerPhp Traits
-
-    use Common\ServerStats; // getServerStats Trait
-
-    use Common\FilesManagement; // Files Management Trait
-
     //--------------- Custom module methods -----------------------------
-
-
 
     /**
      * @param        $option
@@ -92,9 +85,9 @@ class Utility
             setcookie('shoutcookie', $timestamp);
 
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     //irc like commands
@@ -105,7 +98,7 @@ class Utility
      */
     public static function ircLike($command)
     {
-        global  $xoopsUser, $special_stuff_head;
+        global $xoopsUser, $special_stuff_head;
         /** @var Shoutbox\Helper $helper */
         $helper = Shoutbox\Helper::getInstance();
 
@@ -129,9 +122,9 @@ class Utility
                             $special_stuff_head .= '</script>';
 
                             return true;
-                        } else {
-                            return true;
                         }
+
+                        return true;
                     }
                 }
             }

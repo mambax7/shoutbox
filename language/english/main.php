@@ -1,4 +1,5 @@
 <?php
+
 define('_MD_SHOUTBOX_POPUP_ONLINE', "Who's Online");
 define('_MD_SHOUTBOX_POPUP_MESSAGES', 'Shout Messages');
 define('_MD_SHOUTBOX_POPUP_CONSOLE', 'Entry Console');

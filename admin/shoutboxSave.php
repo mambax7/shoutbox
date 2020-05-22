@@ -20,11 +20,11 @@
 
 use XoopsModules\Shoutbox;
 
-if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
+if (!defined('XOOPS_MAINFILE_INCLUDED') || false === mb_strpos($_SERVER['SCRIPT_NAME'], 'admin/main.php')) {
     exit();
 }
 
-$handler =  Shoutbox\Helper::getInstance()->getHandler('Database');
+$handler = Shoutbox\Helper::getInstance()->getHandler('Database');
 
 $id = \Xmf\Request::getInt('id', 0, 'POST');
 if (!$obj = $handler->get($id)) {

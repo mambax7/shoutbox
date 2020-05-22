@@ -17,7 +17,6 @@
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
  */
-
 require_once __DIR__ . '/header.php';
 
 $onlineHandler = xoops_getHandler('online');
@@ -67,5 +66,5 @@ $xoopsTpl->assign('users', $onlineUsers);
 $xoopsTpl->assign('anonymous_count', $anonymous_count);
 $xoopsTpl->assign('online_total', $online_total);
 
-$xoopsTpl->caching= 0;
+$xoopsTpl->caching = 0;
 $xoopsTpl->display('db:shoutbox_online.tpl');

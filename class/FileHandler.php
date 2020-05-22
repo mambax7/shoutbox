@@ -1,4 +1,7 @@
-<?php namespace  XoopsModules\Shoutbox;
+<?php
+
+namespace XoopsModules\Shoutbox;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -21,10 +24,7 @@
 
 use XoopsModules\Shoutbox;
 
-// defined('XOOPS_ROOT_PATH') || die('Restricted access');
-
-
-/**
+ /**
  * Class FileHandler
  */
 class FileHandler extends \XoopsPersistableObjectHandler
@@ -33,9 +33,9 @@ class FileHandler extends \XoopsPersistableObjectHandler
 
     /**
      * FileHandler constructor.
-     * @param \XoopsDatabase $db
+     * @param \XoopsDatabase|null $db
      */
-    public function __construct(\XoopsDatabase $db)
+    public function __construct(\XoopsDatabase $db = null)
     {
         $this->csvfile = XOOPS_ROOT_PATH . '/uploads/shoutbox/shout.csv';
         parent::__construct($db, '', File::class, 'id', 'uid');
@@ -85,7 +85,7 @@ class FileHandler extends \XoopsPersistableObjectHandler
             $obj->setVar('time', $oneline[2]);
             $obj->setVar('ip', $oneline[3]);
             $obj->setVar('uid', $oneline[4]);
-            $objs[] =& $obj;
+            $objs[] = &$obj;
             unset($obj);
             ++$i;
         }

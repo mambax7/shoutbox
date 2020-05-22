@@ -20,13 +20,13 @@
 
 use XoopsModules\Shoutbox;
 
-if (!defined('XOOPS_MAINFILE_INCLUDED') || false === strpos($_SERVER['PHP_SELF'], 'admin/main.php')) {
+if (!defined('XOOPS_MAINFILE_INCLUDED') || false === mb_strpos($_SERVER['SCRIPT_NAME'], 'admin/main.php')) {
     exit();
 }
 
 require_once XOOPS_ROOT_PATH . '/class/module.textsanitizer.php';
 
-$sanitizer = new MyTextSanitizer;
+$sanitizer = new MyTextSanitizer();
 
 // Check or ID is a number
 $id = \Xmf\Request::getInt('id', 0, 'GET');

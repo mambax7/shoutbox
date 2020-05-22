@@ -32,7 +32,6 @@ $helper = Shoutbox\Helper::getInstance();
 $shoutbox = new Shoutbox\MyShoutbox($helper->getConfig('storage_type'));
 
 $onlineHandler = xoops_getHandler('online');
-mt_srand((double)microtime() * 1000000);
 // set gc probability to 10% for now..
 if (mt_rand(1, 100) < 11) {
     $onlineHandler->gc(300);
@@ -92,7 +91,7 @@ if ($isMessage && ($isUser || $isAnonymous)) {
     }
 
     // Enable IRC Commands
-    if (1 == $helper->getConfig('popup_irc') && isset($message) && false !== strpos($message, '/')) {
+    if (1 == $helper->getConfig('popup_irc') && isset($message) && false !== mb_strpos($message, '/')) {
         if (Shoutbox\Utility::ircLike($message)) {
             unset($message);
             $addit = false;
@@ -146,5 +145,5 @@ $xoopsTpl->assign('special_stuff_head', $special_stuff_head);
 $xoopsTpl->assign('newmessage', $newmessage);
 $xoopsTpl->assign('config', $xoopsModuleConfig); //TODO
 
-$xoopsTpl->caching= 0;
+$xoopsTpl->caching = 0;
 $xoopsTpl->display('db:shoutbox_popupframe.tpl');

@@ -1,4 +1,7 @@
-<?php namespace XoopsModules\Shoutbox;
+<?php
+
+namespace XoopsModules\Shoutbox;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -18,7 +21,7 @@
  * @since           5.0
  * @author          trabis <lusopoemas@gmail.com>
  */
-// defined('XOOPS_ROOT_PATH') || die('Restricted access');
+
 
 class Database extends \XoopsObject
 {
