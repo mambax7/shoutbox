@@ -18,7 +18,7 @@
  * @author          trabis <lusopoemas@gmail.com>
  */
 
-// defined('XOOPS_ROOT_PATH') || die('Restricted access');
+
 
 require_once __DIR__ . '/preloads/autoloader.php';
 
@@ -43,8 +43,8 @@ $modversion = [
     'modicons32'          => 'assets/images/icons/32',
     'module_website_url'  => 'www.xoops.org',
     'module_website_name' => 'XOOPS',
-    'min_php'             => '5.5',
-    'min_xoops'           => '2.5.8',
+    'min_php'             =>  '7.2',
+    'min_xoops'           => '2.5.10',
     'min_admin'           => '1.2',
     'min_db'              => ['mysql' => '5.5'],
     // Admin things
@@ -86,7 +86,7 @@ $modversion['templates'] = [
     ['file' => 'shoutbox_shoutframe.tpl', 'description' => 'Template for block-iframe content'],
     ['file' => 'shoutbox_popupframe.tpl', 'description' => 'Template for popup-iframe content'],
     ['file' => 'shoutbox_popupheader.tpl', 'description' => ''],
-    ['file' => 'shoutbox_online.tpl', 'description' => '']
+    ['file' => 'shoutbox_online.tpl', 'description' => ''],
 ];
 
 //$modversion['onInstall']   = 'include/module.php';
@@ -259,7 +259,7 @@ $modversion['config'][] = [
         '_MI_SHOUTBOX_OP19_GA2' => 2,
         '_MI_SHOUTBOX_OP19_GA3' => 3,
         '_MI_SHOUTBOX_OP19_GA4' => 4,
-        '_MI_SHOUTBOX_OP19_GA5' => 5
+        '_MI_SHOUTBOX_OP19_GA5' => 5,
     ],
     'default'     => 1,
 ];
@@ -353,6 +353,15 @@ $modversion['config'][] = [
     'formtype'    => 'select',
     'valuetype'   => 'int',
     'options'     => ['_MI_SHOUTBOX_OP40_TL' => 0, '_MI_SHOUTBOX_OP40_TA' => 1],
+    'default'     => 1,
+];
+$modversion['config'][] = [
+    'name'        => 'scroll_type',
+    'title'       => '_MI_SHOUTBOX_TITLE47',
+    'description' => '_MI_SHOUTBOX_DESC47',
+    'formtype'    => 'select',
+    'valuetype'   => 'int',
+    'options'     => ['_MI_SHOUTBOX_OP47_TL' => 0, '_MI_SHOUTBOX_OP47_TA' => 1],
     'default'     => 1,
 ];
 $modversion['config'][] = [

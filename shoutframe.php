@@ -17,6 +17,7 @@
  * @author          tank <tanksplace@comcast.net>
  * @author          trabis <lusopoemas@gmail.com>
  */
+
 use XoopsModules\Shoutbox;
 
 require_once __DIR__ . '/header.php';
@@ -24,7 +25,6 @@ require_once __DIR__ . '/header.php';
 
 /** @var Shoutbox\Helper $helper */
 $helper = Shoutbox\Helper::getInstance();
-
 
 $shoutbox = new Shoutbox\MyShoutbox($helper->getConfig('storage_type'));
 
@@ -80,11 +80,17 @@ if ($isMessage && ($isUser || $isAnonymous)) {
 
 $shouts = $shoutbox->getShouts(0, $helper->getConfig('allow_bbcode'), $helper->getConfig('maxshouts_view'));
 
+$scrollDirection = $helper->getConfig('scroll_type');
 if (!empty($shouts)) {
-    $xoopsTpl->assign('shouts', $shouts);
+    if (0 === $scrollDirection) {
+        $xoopsTpl->assign('shouts', array_reverse($shouts));
+    } else {
+        $xoopsTpl->assign('shouts', $shouts);
+    }
 }
+
 
 $xoopsTpl->assign('config', $xoopsModuleConfig); //TODO
 
-$xoopsTpl->caching= 0;
+$xoopsTpl->caching = 0;
 $xoopsTpl->display('db:shoutbox_shoutframe.tpl');
