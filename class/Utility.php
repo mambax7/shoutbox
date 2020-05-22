@@ -4,7 +4,7 @@ namespace XoopsModules\Shoutbox;
 
 use XoopsModules\Shoutbox;
 use XoopsModules\Shoutbox\Common;
-use XoopsModules\Shoutbox\Constants;
+//use XoopsModules\Shoutbox\Constants;
 
 /**
  * Class Utility

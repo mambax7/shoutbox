@@ -27,8 +27,8 @@ $moduleDirName = basename(__DIR__);
 // ------------------- Informations ------------------- //
 $modversion = [
     'version'             => '5.10',
-    'module_status'       => 'Beta 1',
-    'release_date'        => '2018/04/09',
+    'module_status'       => 'RC 1',
+    'release_date'        => '2020/05/21',
     'name'                => _MI_SHOUTBOX_NAME,
     'description'         => _MI_SHOUTBOX_DESC,
     'credits'             => 'XOOPS Project',

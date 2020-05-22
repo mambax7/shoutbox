@@ -1,7 +1,9 @@
-<h5>5.10 Beta 1       [2018-04-09]</h5>  Dev: Xoops 2.5.9, PHP 7.2.4
+<h5>5.10 RC-1       [2020-05-21]</h5>  Dev: Xoops 2.5.11, PHP 7.4.6
 <hr>
 - namespaces, class autoloading (mamba)
-WORK IN PROGRESS
+- PHP 7 updates (mamba)
+- reverse scrolling option (lupin/mamba)
+
 
 <h5>5.02 Beta 2       [2017-07-11]</h5>
 <hr>
