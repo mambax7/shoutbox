@@ -2,7 +2,6 @@
 
 namespace XoopsModules\Shoutbox\Common;
 
-
 /*
  Utility Class Definition
 
