@@ -80,7 +80,7 @@ class DatabaseHandler extends \XoopsPersistableObjectHandler
         $criteria->setLimit($limit);
         $objs = $this->getList($criteria, true);
         unset($criteria);
-        $criteria = new \Criteria('id', '(' . implode(',', array_keys($objs)) . ')', 'NOT IN');
+        $criteria = new \Criteria('id', '(' . \implode(',', \array_keys($objs)) . ')', 'NOT IN');
 
         return $this->deleteAll($criteria);
     }

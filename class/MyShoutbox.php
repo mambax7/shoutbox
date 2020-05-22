@@ -67,8 +67,8 @@ class MyShoutbox
         $obj  = $this->handler->createShout();
         $obj->setVar('uid', $uid);
         $obj->setVar('uname', $uname);
-        $obj->setVar('time', time());
-        $obj->setVar('ip', getenv('REMOTE_ADDR'));
+        $obj->setVar('time', \time());
+        $obj->setVar('ip', \getenv('REMOTE_ADDR'));
         $obj->setVar('message', $message);
 
         if (!$this->handler->saveShout($obj)) {
@@ -107,7 +107,7 @@ class MyShoutbox
             $shouts[$i]['message'] = $myts->censorString($obj->getVar('message'));
             $wordwrap              = Shoutbox\Utility::getOption('wordwrap_setting');
             if ($wordwrap) {
-                $shouts[$i]['message'] = wordwrap($shouts[$i]['message'], $wordwrap, "\r\n", true);
+                $shouts[$i]['message'] = \wordwrap($shouts[$i]['message'], $wordwrap, "\r\n", true);
             }
 
             if (0 != $uid) {
@@ -161,6 +161,6 @@ class MyShoutbox
      */
     public function shoutExists($message)
     {
-        return $this->handler->shoutExists($message, getenv('REMOTE_ADDR'));
+        return $this->handler->shoutExists($message, \getenv('REMOTE_ADDR'));
     }
 }

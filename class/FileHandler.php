@@ -55,9 +55,9 @@ class FileHandler extends \XoopsPersistableObjectHandler
      */
     public function saveShout($obj)
     {
-        $f = fopen($this->csvfile, 'ab');
-        fwrite($f, $obj->getVar('uname', 'n') . '|' . $obj->getVar('message', 'n') . '|' . $obj->getVar('time', 'n') . '|' . $obj->getVar('ip', 'n') . '|' . $obj->getVar('uid', 'n') . "\n");
-        fclose($f);
+        $f = \fopen($this->csvfile, 'ab');
+        \fwrite($f, $obj->getVar('uname', 'n') . '|' . $obj->getVar('message', 'n') . '|' . $obj->getVar('time', 'n') . '|' . $obj->getVar('ip', 'n') . '|' . $obj->getVar('uid', 'n') . "\n");
+        \fclose($f);
 
         return true;
     }
@@ -69,15 +69,15 @@ class FileHandler extends \XoopsPersistableObjectHandler
     public function getShouts($limit)
     {
         $objs   = [];
-        $shouts = file($this->csvfile);
-        $count  = count($shouts) - 1;
+        $shouts = \file($this->csvfile);
+        $count  = \count($shouts) - 1;
         $i      = 0;
         for ($count; $count >= 0; $count--) {
             if ($limit <= $i) {
                 break;
             }
             $oneline = [];
-            $oneline = explode('|', $shouts[$count]);
+            $oneline = \explode('|', $shouts[$count]);
 
             $obj = $this->create();
             $obj->setVar('uname', $oneline[0]);
@@ -99,17 +99,17 @@ class FileHandler extends \XoopsPersistableObjectHandler
      */
     public function pruneShouts($limit)
     {
-        $shouts = file($this->csvfile);
-        $totrim = count($shouts) - $limit;
+        $shouts = \file($this->csvfile);
+        $totrim = \count($shouts) - $limit;
         if ($totrim > 0) {
             for ($i = 0; $i < $totrim; ++$i) {
-                array_shift($shouts);
+                \array_shift($shouts);
             }
-            $f = fopen($this->csvfile, 'wb');
+            $f = \fopen($this->csvfile, 'wb');
             foreach ($shouts as $i => $line) {
-                fwrite($f, $line);
+                \fwrite($f, $line);
             }
-            fclose($f);
+            \fclose($f);
         }
 
         return true;
@@ -120,8 +120,8 @@ class FileHandler extends \XoopsPersistableObjectHandler
      */
     public function deleteShouts()
     {
-        $f = fopen($this->csvfile, 'wb');
-        fclose($f);
+        $f = \fopen($this->csvfile, 'wb');
+        \fclose($f);
 
         return true;
     }
@@ -133,11 +133,11 @@ class FileHandler extends \XoopsPersistableObjectHandler
      */
     public function shoutExists($message, $ip)
     {
-        $shouts = file($this->csvfile);
+        $shouts = \file($this->csvfile);
         if (!empty($shouts)) {
-            $count   = count($shouts) - 1;
-            $oneline = explode('|', $shouts[$count]);
-            if (0 != count($oneline)) {
+            $count   = \count($shouts) - 1;
+            $oneline = \explode('|', $shouts[$count]);
+            if (0 != \count($oneline)) {
                 if ($oneline[3] == $ip && $oneline[1] == $message) {
                     return true;
                 }
